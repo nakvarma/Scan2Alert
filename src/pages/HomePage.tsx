@@ -30,7 +30,7 @@ const HomePage = () => {
         start: startDate,
         end: endDate
       };
-      const response = await axios.get("http://localhost:3000/registrations", { params });
+      const response = await axios.get("https://whatsappbot-nine.vercel.app/registrations", { params });
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
       console.log(response.data);
@@ -69,7 +69,7 @@ const HomePage = () => {
     try {
       const confirmed = window.confirm("Are you sure you want to delete this vehicle-Owner?");
       if (!confirmed) return;
-      await axios.delete(`http://localhost:3000/registrations/${userId}`);
+      await axios.delete(`https://whatsappbot-nine.vercel.app/registrations/${userId}`);
       setRegistrations(registrations.filter((user) => user._id !== userId));
       setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
       console.log("User deleted successfully.");

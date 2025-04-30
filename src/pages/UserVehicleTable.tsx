@@ -23,7 +23,7 @@ const UserVehicleDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/registrations/${userId}`);
+      const response = await axios.get(`https://whatsappbot-nine.vercel.app/registrations/${userId}`);
       setUserDetails(response.data);
     } catch (error) {
       console.error("Error fetching user details:", error);
@@ -45,7 +45,7 @@ const UserVehicleDetails = () => {
     const confirmed = window.confirm("Are you sure you want to delete this vehicle?");
     if (!confirmed) return;
     try {
-      await axios.delete(`http://localhost:3000/registrations/${userId}/vehicles/${_id}`);
+      await axios.delete(`https://whatsappbot-nine.vercel.app/registrations/${userId}/vehicles/${_id}`);
       await fetchUserDetails();
     } catch (error) {
       console.error("Error deleting vehicle:", error);
