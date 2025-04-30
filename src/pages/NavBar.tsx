@@ -5,11 +5,11 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    navigate('/'); 
+    navigate('/');
   };
 
   const handleCarRegistration = () => {
-    navigate('/dashboard'); 
+    navigate('/dashboard');
   };
 
   return (
