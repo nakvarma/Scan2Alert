@@ -165,9 +165,9 @@ const UserVehicleDetails = () => {
                       <div className="mt-4">
                         <h4 className="font-semibold font-serif">Complaints:</h4>
                         {vehicle.complaints.map((complaint: any, complaintIndex: number) => (
-                          <div key={complaintIndex} className="mt-2 hover:scale-105 transition-transform duration-200">
+                          <div key={complaintIndex} className="mt-2  px-5 hover:scale-105 transition-transform duration-200">
                             <div
-                              className="cursor-pointer p-3 rounded-lg shadow-md hover:bg-gray-100"
+                              className="cursor-pointer p-3 rounded-lg shadow-md hover:bg-gray-400"
                               onClick={() => toggleComplaintDetails(complaintIndex)}
                             >
                               <p className="font-serif"><strong>Complaint:</strong> {complaint.complaint}</p>
