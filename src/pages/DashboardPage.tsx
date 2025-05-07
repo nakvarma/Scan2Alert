@@ -5,8 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from "./NavBar";
 
 const DashboardPage = () => {
-  const [registrations, setRegistrations] = useState([]);
-  const [filteredRegistrations, setFilteredRegistrations] = useState([]);
+  interface Registration {
+    _id: string;
+    phone: string;
+    name: string;
+    createdAt: string;
+    vehicles: any[];
+  }
+
+  const [registrations, setRegistrations] = useState<Registration[]>([]);
+  const [filteredRegistrations, setFilteredRegistrations] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [startDate, setStartDate] = useState('');

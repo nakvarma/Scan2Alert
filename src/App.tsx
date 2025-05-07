@@ -5,6 +5,12 @@ import DashboardPage from './pages/DashboardPage';
 import UserVehicleTable from './pages/UserVehicleTable';
 
 import ProtectedRoute from './components/ProtectedRoute';
+import About from './pages/About';
+import Services from './pages/Services.tsx';
+import TermsAndConditions from './pages/TermsAndConditions.tsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
+import ContactUs from './pages/ContactUs.tsx';
+import Home from './pages/Home.tsx';
 
 function App() {
   return (
@@ -12,7 +18,7 @@ function App() {
       <div>
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-3.5rem)]">
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/view/:userId" element={
               <ProtectedRoute>
                 <UserVehicleTable />
@@ -23,6 +29,40 @@ function App() {
                 <ProtectedRoute>
                   <DashboardPage />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                  <About />
+              }
+            />
+            <Route
+              path="/"
+              element={
+                  <Home />
+              }
+            />
+             <Route
+              path="/services"
+              element={
+                  <Services />
+              }
+            />
+              <Route
+              path="/terms"
+              element={
+                  <TermsAndConditions />
+              }
+            />
+              <Route
+              path="/privacy"
+              element={ <PrivacyPolicy /> }
+            />
+             <Route
+              path="/contact"
+              element={
+               <ContactUs />
               }
             />
           </Routes>
