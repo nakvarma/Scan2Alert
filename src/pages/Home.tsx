@@ -15,9 +15,9 @@ const Home: React.FC = () => {
     ];
 
     const parkingImages = [
-        '/dist/assets/mk.jpg',
-        '/dist/assets/willy.jpg',
-        '/dist/assets/chris.jpg'
+        '/assets/mk.jpg',
+        '/assets/willy.jpg',
+        '/assets/chris.jpg'
     ];
 
     return (
