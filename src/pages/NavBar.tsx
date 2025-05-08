@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-const { isAuthenticated, } = useAuth();
+  const { isAuthenticated, } = useAuth();
   console.log("isAuthenticated", isAuthenticated)
 
   const handleSignOut = () => {
@@ -30,14 +30,14 @@ const { isAuthenticated, } = useAuth();
     <div className="bg-indigo-600 p-4 font-serif">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
-        {isAuthenticated && (
-          <button
-            onClick={handleCarRegistration}
-            className="text-white font-semibold text-lg hover:text-indigo-200 transition-all"
-          >
-            Car Registration
-          </button>
-        )}
+          {isAuthenticated && (
+            <button
+              onClick={handleCarRegistration}
+              className="text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+            >
+              Car Registration
+            </button>
+          )}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <button
@@ -52,43 +52,43 @@ const { isAuthenticated, } = useAuth();
         </div>
 
         <div className="flex items-center space-x-4">
-        {isAuthenticated ? (
-  <>
-    <button
-      onClick={handleSignOut}
-      className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
-    >
-      <LogOut size={20} className="mr-2" />
-      Sign Out
-    </button>
-    <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className="md:hidden text-white font-semibold text-lg"
-    >
-      <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
-      <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
-      <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
-    </button>
-  </>
-) : (
-  <>
-    <button
-      onClick={() => navigate('/login')}
-      className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
-    >
-      <LogIn size={20} className="mr-2" />
-      Sign In
-    </button>
-    <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      className="md:hidden text-white font-semibold text-lg"
-    >
-      <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
-      <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
-      <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
-    </button>
-  </>
-)}
+          {isAuthenticated ? (
+            <>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+              >
+                <LogOut size={20} className="mr-2" />
+                Sign Out
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden text-white font-semibold text-lg"
+              >
+                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate('/login')}
+                className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+              >
+                <LogIn size={20} className="mr-2" />
+                Sign In
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden text-white font-semibold text-lg"
+              >
+                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
+              </button>
+            </>
+          )}
 
 
         </div>
@@ -102,7 +102,7 @@ const { isAuthenticated, } = useAuth();
             key={link.path}
             onClick={() => {
               navigate(link.path);
-              setIsMenuOpen(false); 
+              setIsMenuOpen(false);
             }}
             className="text-white font-semibold text-lg hover:text-indigo-200 transition-all w-full text-left"
           >

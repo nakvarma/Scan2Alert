@@ -11,6 +11,8 @@ import TermsAndConditions from './pages/TermsAndConditions.tsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx';
 import ContactUs from './pages/ContactUs.tsx';
 import Home from './pages/Home.tsx';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
@@ -34,35 +36,35 @@ function App() {
             <Route
               path="/about"
               element={
-                  <About />
+                <About />
               }
             />
             <Route
               path="/"
               element={
-                  <Home />
+                <Home />
               }
             />
-             <Route
+            <Route
               path="/services"
               element={
-                  <Services />
+                <Services />
               }
             />
-              <Route
+            <Route
               path="/terms"
               element={
-                  <TermsAndConditions />
+                <TermsAndConditions />
               }
             />
-              <Route
+            <Route
               path="/privacy"
-              element={ <PrivacyPolicy /> }
+              element={<PrivacyPolicy />}
             />
-             <Route
+            <Route
               path="/contact"
               element={
-               <ContactUs />
+                <ContactUs />
               }
             />
           </Routes>

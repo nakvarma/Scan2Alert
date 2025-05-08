@@ -100,7 +100,7 @@ const UserVehicleDetails = () => {
       </div>
     );
   }
-  
+
   return (
     <div>
       <Navbar />

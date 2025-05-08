@@ -161,7 +161,6 @@ const DashboardPage = () => {
           />
         </div>
 
-        {/* Mobile View */}
         <div className="space-y-4 md:hidden">
           {filteredRegistrations.map((user, userIndex) =>
             user.vehicles.map((vehicle, vehicleIndex) => (
