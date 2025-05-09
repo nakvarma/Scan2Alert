@@ -42,13 +42,13 @@ const DashboardPage = () => {
       const response = await axios.get("https://whatsappbot-nine.vercel.app/registrations", { params });
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching registrations:", error);
     } finally {
       setLoading(false);
     }
   };
+
   const filterRegistrations = () => {
     const filtered = registrations.filter(user => {
       const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
@@ -81,7 +81,6 @@ const DashboardPage = () => {
       await axios.delete(`https://whatsappbot-nine.vercel.app/registrations/${userId}`);
       setRegistrations(registrations.filter((user) => user._id !== userId));
       setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
-      console.log("User deleted successfully.");
     } catch (error) {
       console.error("Error deleting user:", error);
     }
@@ -101,12 +100,11 @@ const DashboardPage = () => {
 
   const today = new Date().toISOString().split("T")[0];
 
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen flex-col space-y-4">
         <svg
-          className="animate-spin h-8 w-8 text-gray-500"
+          className="animate-spin h-8 w-8 text-teal-600"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -125,20 +123,19 @@ const DashboardPage = () => {
             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
           ></path>
         </svg>
-        <p className="text-center font-serif text-lg text-gray-700">Loading...</p>
+        <p className="text-center font-serif text-lg text-teal-600">Loading...</p>
       </div>
     );
   }
+
   return (
-
-
     <div>
       <Navbar />
-      <div className="max-w-5xl mx-auto p-6 bg-gray-50 mt-10">
+      <div className="max-w-5xl mx-auto p-6 bg-teal-50 mt-10">
         <div className="mb-6 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
           <input
             type="text"
-            className="p-3 rounded-md border border-gray-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
+            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
             placeholder="Search by phone or name"
             value={searchQuery}
             onChange={handleSearchChange}
@@ -146,7 +143,7 @@ const DashboardPage = () => {
 
           <input
             type="date"
-            className="p-3 rounded-md border border-gray-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none w-full md:max-w-xs"
+            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:max-w-xs"
             value={startDate}
             onChange={handleStartDateChange}
             max={today}
@@ -154,7 +151,7 @@ const DashboardPage = () => {
 
           <input
             type="date"
-            className="p-3 rounded-md border border-gray-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none w-full md:max-w-xs"
+            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:max-w-xs"
             value={endDate}
             onChange={handleEndDateChange}
             max={today}
@@ -183,7 +180,7 @@ const DashboardPage = () => {
                       </button>
                       <button
                         onClick={() => handleView(user._id)}
-                        className="text-indigo-600 hover:text-indigo-800 flex items-center"
+                        className="text-teal-600 hover:text-teal-800 flex items-center"
                       >
                         <Eye size={16} className="mr-1" /> View
                       </button>
@@ -198,7 +195,7 @@ const DashboardPage = () => {
         <div className="hidden  max-full md:flex justify-center">
           <div className="w-full max-w-5xl overflow-x-auto bg-white rounded-lg shadow-md">
             <table className="min-w-full">
-              <thead className="bg-indigo-600 text-white text-sm">
+              <thead className="bg-teal-600 text-white text-sm">
                 <tr>
                   <th className="py-3 px-4 text-left">No</th>
                   <th className="py-3 px-4 text-left">Phone</th>
@@ -230,7 +227,7 @@ const DashboardPage = () => {
                           </td>
                           <td className="py-2 px-4" rowSpan={user.vehicles.length}>
                             <button
-                              className="text-indigo-600 hover:text-indigo-800"
+                              className="text-teal-600 hover:text-teal-800"
                               onClick={() => handleView(user._id)}
                             >
                               <Eye size={18} />
@@ -247,7 +244,6 @@ const DashboardPage = () => {
         </div>
       </div>
     </div>
-
   );
 };
 

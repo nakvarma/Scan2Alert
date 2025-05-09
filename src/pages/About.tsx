@@ -1,5 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './NavBar';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const About: React.FC = () => {
     const carouselItems = [
@@ -21,84 +24,65 @@ const About: React.FC = () => {
         },
     ];
 
-    const scrollCarousel = (direction: 'left' | 'right') => {
-        const carousel = document.getElementById('carousel');
-        if (carousel) {
-            const scrollAmount = direction === 'left' ? -300 : 300;
-            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
+    const parkingImages = [
+        '/assets/car.jpg'
+        
+    ];
 
     return (
         <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
+            <Navbar />
 
-            <div className="shrink-0">
-                <Navbar />
-            </div>
-
-
-
-
-            <div className="mt-4 mx-4 sm:mx-6 md:mx-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-16 px-8 text-center shadow-lg rounded-lg overflow-hidden relative animate-gradient-move">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-lg animate-fade-in-up">
-                    Welcome to the Future of Car Registration
-                </h1>
-                <p className="mt-4 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto drop-shadow-md animate-fade-in-up delay-200">
-                    Simplify your vehicle registration experience with our fast, secure, and user-friendly platform.
-                </p>
-            </div>
-
-
-
-
+            <motion.div
+                className="relative w-full bg-gray-100 mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+                <h2 className="text-center text-3xl sm:text-4xl font-bold text-teal-600 py-6">
+                    Explore Our Platform
+                </h2>
+                <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-4">
+                    {parkingImages.map((src, index) => (
+                        <div key={index} className="rounded-2xl overflow-hidden shadow-lg h-96 w-3/4 mx-auto flex items-center justify-center bg-gray-100">
+                            <img src={src} alt={`Parking Issue ${index + 1}`} className="object-cover w-full h-full" />
+                        </div>
+                    ))}
+                </Carousel>
+            </motion.div>
 
             <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
                 <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
-
                     <div className="text-center">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700">
                             About Our Car Registration Portal
                         </h1>
-                        <p className="mt-2 text-gray-600 text-sm sm:text-base">
+                        <p className="mt-2 text-teal-600 text-sm sm:text-base">
                             Simplifying the car registration process through technology.
                         </p>
                     </div>
 
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm sm:text-base">
-                        <div className="transition-colors duration-300 hover:bg-indigo-50 p-4 rounded-lg shadow-md">
-                            <h2 className="text-lg sm:text-xl font-semibold text-indigo-500">Our Mission</h2>
-                            <p className="mt-2 text-gray-700">
-                                To streamline vehicle registration with a fast, reliable, and user-friendly digital platform that ensures a smooth experience for users.
-                            </p>
-                        </div>
-                        <div className="transition-colors duration-300 hover:bg-indigo-50 p-4 rounded-lg shadow-md">
-                            <h2 className="text-lg sm:text-xl font-semibold text-indigo-500">Our Vision</h2>
-                            <p className="mt-2 text-gray-700">
-                                To become the leading digital portal for vehicle registration services by reducing paperwork, wait times, and hassle.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div className="relative w-full bg-indigo-50 p-4 sm:p-6 rounded-xl shadow-md">
-                        <h2 className="text-lg sm:text-xl font-semibold text-indigo-500 text-center">Our Key Features</h2>
-                        <div className="relative mt-4">
-                            <button onClick={() => scrollCarousel('left')} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white px-3 py-2 rounded-full shadow-md z-10">◀</button>
-                            <div id="carousel" className="flex overflow-x-scroll scrollbar-hide space-x-4 pl-12 pr-12">
-                                {carouselItems.map((item, index) => (
-                                    <div key={index} className="flex-shrink-0 bg-white rounded-lg shadow-md p-4 w-72 transition-transform duration-300 transform hover:scale-105">
-                                        <h3 className="text-indigo-600 font-semibold">{item.title}</h3>
-                                        <p className="text-gray-700 mt-2">{item.description}</p>
+                    <div className="relative w-full bg-teal-50 p-4 sm:p-6 rounded-xl shadow-md">
+                        <h2 className="text-lg sm:text-xl font-semibold text-teal-600 text-center">Our Key Features</h2>
+                        <div className="relative mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                            {carouselItems.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="relative bg-teal-600 text-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 group"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                                >
+                                    <div className="relative z-10 p-6 text-center">
+                                        <h3 className="text-lg font-semibold group-hover:scale-110 transition-transform duration-300">{item.title}</h3>
+                                        <p className="mt-2 text-sm group-hover:opacity-75 transition-opacity duration-300">{item.description}</p>
                                     </div>
-                                ))}
-                            </div>
-                            <button onClick={() => scrollCarousel('right')} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white px-3 py-2 rounded-full shadow-md z-10">▶</button>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
-
-                    <div className="text-center text-gray-500 text-xs pt-4 border-t">
+                    <div className="text-center text-teal-500 text-xs pt-4 border-t">
                         &copy; {new Date().getFullYear()} Car Registration Portal. All rights reserved.
                     </div>
                 </div>

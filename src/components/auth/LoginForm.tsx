@@ -90,7 +90,7 @@ const LoginForm: React.FC = () => {
       </div>
       <Button
         type="submit"
-        className="w-full bg-indigo-600"
+        className="w-full bg-teal-400"
         isLoading={isLoading}
       >
         Sign In

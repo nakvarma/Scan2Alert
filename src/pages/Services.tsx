@@ -20,7 +20,7 @@ const Services: React.FC = () => {
             <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
                 <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
                     <div className="text-center">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-600">
                             Our Services
                         </h1>
                         <p className="mt-2 text-gray-600 text-sm sm:text-base">
@@ -30,7 +30,7 @@ const Services: React.FC = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm sm:text-base">
                         {services.map((service, index) => (
-                            <div key={index} className="relative bg-indigo-600 text-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 group">
+                            <div key={index} className="relative bg-teal-600 text-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 group">
                                 <div className="relative z-10 p-6 text-center">
                                     <h2 className="text-lg font-semibold group-hover:scale-110 transition-transform duration-300">{service.title}</h2>
                                     <p className="mt-2 text-sm group-hover:opacity-75 transition-opacity duration-300">{service.description}</p>
@@ -40,7 +40,7 @@ const Services: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="text-center text-gray-500 text-xs pt-4 border-t">
+                    <div className="text-center text-teal-500 text-xs pt-4 border-t">
                         &copy; {new Date().getFullYear()} Car Registration Portal. All rights reserved.
                     </div>
                 </div>

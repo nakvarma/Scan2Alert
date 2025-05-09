@@ -6,8 +6,8 @@ import { useAuth } from '../context/AuthContext';
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, } = useAuth();
-  console.log("isAuthenticated", isAuthenticated)
+  const { isAuthenticated } = useAuth();
+  console.log("isAuthenticated", isAuthenticated);
 
   const handleSignOut = () => {
     navigate('/login');
@@ -27,13 +27,13 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-indigo-600 p-4 font-serif">
+    <div className="bg-teal-600 p-4 font-serif">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {isAuthenticated && (
             <button
               onClick={handleCarRegistration}
-              className="text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+              className="text-white font-semibold text-lg hover:text-teal-200 transition-all"
             >
               Car Registration
             </button>
@@ -43,7 +43,7 @@ const Navbar = () => {
               <button
                 key={link.path}
                 onClick={() => navigate(link.path)}
-                className="text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+                className="text-white font-semibold text-lg hover:text-teal-200 transition-all"
               >
                 {link.label}
               </button>
@@ -56,7 +56,7 @@ const Navbar = () => {
             <>
               <button
                 onClick={handleSignOut}
-                className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+                className="flex items-center text-white font-semibold text-lg hover:text-teal-200 transition-all"
               >
                 <LogOut size={20} className="mr-2" />
                 Sign Out
@@ -74,7 +74,7 @@ const Navbar = () => {
             <>
               <button
                 onClick={() => navigate('/login')}
-                className="flex items-center text-white font-semibold text-lg hover:text-indigo-200 transition-all"
+                className="flex items-center text-white font-semibold text-lg hover:text-teal-200 transition-all"
               >
                 <LogIn size={20} className="mr-2" />
                 Sign In
@@ -89,13 +89,11 @@ const Navbar = () => {
               </button>
             </>
           )}
-
-
         </div>
       </div>
 
       <div
-        className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-indigo-600 p-4 space-y-4`}
+        className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-teal-600 p-4 space-y-4`}
       >
         {navLinks.map((link) => (
           <button
@@ -104,7 +102,7 @@ const Navbar = () => {
               navigate(link.path);
               setIsMenuOpen(false);
             }}
-            className="text-white font-semibold text-lg hover:text-indigo-200 transition-all w-full text-left"
+            className="text-white font-semibold text-lg hover:text-teal-200 transition-all w-full text-left"
           >
             {link.label}
           </button>

@@ -46,7 +46,9 @@ const ContactUs: React.FC = () => {
             <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
                 <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
                     <div className="text-center">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600">Contact Us</h1>
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-600">
+                            Contact Us
+                        </h1>
                         <p className="mt-2 text-gray-600 text-sm sm:text-base">
                             We're here to assist you. Fill out the form below or reach out to us via email.
                         </p>
@@ -54,45 +56,45 @@ const ContactUs: React.FC = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-semibold text-indigo-500" htmlFor="name">Name</label>
+                            <label className="block text-sm font-semibold text-teal-500" htmlFor="name">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 transition-transform duration-300 transform hover:scale-105"
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-teal-500 transition-transform duration-300 transform hover:scale-105"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-indigo-500" htmlFor="email">Email</label>
+                            <label className="block text-sm font-semibold text-teal-500" htmlFor="email">Email</label>
                             <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 transition-transform duration-300 transform hover:scale-105"
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-teal-500 transition-transform duration-300 transform hover:scale-105"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-indigo-500" htmlFor="message">Message</label>
+                            <label className="block text-sm font-semibold text-teal-500" htmlFor="message">Message</label>
                             <textarea
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
                                 rows={4}
                                 required
-                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500 transition-transform duration-300 transform hover:scale-105"
+                                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-teal-500 transition-transform duration-300 transform hover:scale-105"
                             />
                         </div>
 
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className={`mt-4 w-full py-2 px-4 rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`mt-4 w-full py-2 px-4 rounded-xl text-white bg-teal-600 hover:bg-teal-700 transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                             {isSubmitting ? 'Submitting...' : 'Send Message'}
                         </button>
@@ -105,7 +107,7 @@ const ContactUs: React.FC = () => {
                         <div className="text-red-600 text-center font-medium">{errorMessage}</div>
                     )}
 
-                    <div className="text-center text-gray-500 text-xs pt-4 border-t">
+                    <div className="text-center text-teal-500 text-xs pt-4 border-t">
                         &copy; {new Date().getFullYear()} Car Registration Portal. All rights reserved.
                     </div>
                 </div>
