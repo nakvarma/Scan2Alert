@@ -25,9 +25,7 @@ const About: React.FC = () => {
     ];
 
     const parkingImages = [
-        '/assets/car.jpg'
-        
-    ];
+        '/assets/car.jpg'];
 
     return (
         <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
@@ -42,13 +40,11 @@ const About: React.FC = () => {
                 <h2 className="text-center text-3xl sm:text-4xl font-bold text-teal-600 py-6">
                     Explore Our Platform
                 </h2>
-                <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-4">
                     {parkingImages.map((src, index) => (
                         <div key={index} className="rounded-2xl overflow-hidden shadow-lg h-96 w-3/4 mx-auto flex items-center justify-center bg-gray-100">
                             <img src={src} alt={`Parking Issue ${index + 1}`} className="object-cover w-full h-full" />
                         </div>
                     ))}
-                </Carousel>
             </motion.div>
 
             <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
