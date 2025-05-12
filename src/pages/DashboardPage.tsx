@@ -39,7 +39,7 @@ const DashboardPage = () => {
         start: startDate,
         end: endDate
       };
-      const response = await axios.get("https://whatsappbot-nine.vercel.app/registrations", { params });
+      const response = await axios.get("http://69.62.82.2:5000/registrations", { params });
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
     } catch (error) {
