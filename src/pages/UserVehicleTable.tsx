@@ -23,7 +23,7 @@ const UserVehicleDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await axios.get(`http://69.62.82.2:5000/registrations/${userId}`);
+      const response = await axios.get(`https://api.scan2alert.in/api/registrations/${userId}`);
       setUserDetails(response.data);
     } catch (error) {
       console.error("Error fetching user details:", error);

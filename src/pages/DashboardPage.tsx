@@ -39,7 +39,7 @@ const DashboardPage = () => {
         start: startDate,
         end: endDate
       };
-      const response = await axios.get("http://69.62.82.2:5000/registrations", { params });
+      const response = await axios.get("https://api.scan2alert.in/api/registrations", { params });
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
     } catch (error) {
@@ -78,7 +78,7 @@ const DashboardPage = () => {
     try {
       const confirmed = window.confirm("Are you sure you want to delete this vehicle-Owner?");
       if (!confirmed) return;
-      await axios.delete(`https://whatsappbot-nine.vercel.app/registrations/${userId}`);
+      await axios.delete(`https://api.scan2alert.in/api/registrations/${userId}`);
       setRegistrations(registrations.filter((user) => user._id !== userId));
       setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
     } catch (error) {

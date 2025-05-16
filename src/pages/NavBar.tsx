@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogIn, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-
+import logo  from '../assets/scan2alert-logo.jpg';
 const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +30,7 @@ const Navbar = () => {
     <div className="bg-teal-600 p-4 font-serif">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
+          <img src={logo} alt="Logo" className="h-20 rounded-xl " />
           {isAuthenticated && (
             <button
               onClick={handleCarRegistration}
