@@ -104,7 +104,8 @@ const DashboardPage = () => {
     return (
       <div className="flex justify-center items-center h-screen flex-col space-y-4">
         <svg
-          className="animate-spin h-8 w-8 text-teal-600"
+          className="animate-spin h-8 w-8"
+          style={{ color: '#0084C2' }}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -123,7 +124,7 @@ const DashboardPage = () => {
             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
           ></path>
         </svg>
-        <p className="text-center font-serif text-lg text-teal-600">Loading...</p>
+        <p className="text-center font-serif text-lg" style={{ color: '#0084C2' }}>Loading...</p>
       </div>
     );
   }
@@ -131,11 +132,12 @@ const DashboardPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-5xl mx-auto p-6 bg-teal-50 mt-10">
+      <div className="max-w-5xl mx-auto p-6" style={{ backgroundColor: '#E6F0FA', marginTop: '2.5rem' }}>
         <div className="mb-6 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
           <input
             type="text"
-            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
+            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
+            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
             placeholder="Search by phone or name"
             value={searchQuery}
             onChange={handleSearchChange}
@@ -143,7 +145,8 @@ const DashboardPage = () => {
 
           <input
             type="date"
-            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:max-w-xs"
+            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
+            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
             value={startDate}
             onChange={handleStartDateChange}
             max={today}
@@ -151,7 +154,8 @@ const DashboardPage = () => {
 
           <input
             type="date"
-            className="p-3 rounded-md border border-teal-300 bg-white text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:max-w-xs"
+            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
+            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
             value={endDate}
             onChange={handleEndDateChange}
             max={today}
@@ -180,7 +184,8 @@ const DashboardPage = () => {
                       </button>
                       <button
                         onClick={() => handleView(user._id)}
-                        className="text-teal-600 hover:text-teal-800 flex items-center"
+                        className="flex items-center"
+                        style={{ color: '#0084C2' }}
                       >
                         <Eye size={16} className="mr-1" /> View
                       </button>
@@ -192,10 +197,10 @@ const DashboardPage = () => {
           )}
         </div>
 
-        <div className="hidden  max-full md:flex justify-center">
+        <div className="hidden max-full md:flex justify-center">
           <div className="w-full max-w-5xl overflow-x-auto bg-white rounded-lg shadow-md">
             <table className="min-w-full">
-              <thead className="bg-teal-600 text-white text-sm">
+              <thead style={{ backgroundColor: '#0084C2', color: 'white', fontSize: '0.875rem' }}>
                 <tr>
                   <th className="py-3 px-4 text-left">No</th>
                   <th className="py-3 px-4 text-left">Phone</th>
@@ -219,16 +224,20 @@ const DashboardPage = () => {
                           </td>
                           <td className="py-2 px-4" rowSpan={user.vehicles.length}>
                             <button
-                              className="text-red-600 hover:text-red-800"
+                              style={{ color: '#D14343' }}
                               onClick={() => handleDelete(user._id)}
+                              onMouseOver={e => (e.currentTarget.style.color = '#7B1E1E')}
+                              onMouseOut={e => (e.currentTarget.style.color = '#D14343')}
                             >
                               <Trash size={18} />
                             </button>
                           </td>
                           <td className="py-2 px-4" rowSpan={user.vehicles.length}>
                             <button
-                              className="text-teal-600 hover:text-teal-800"
+                              style={{ color: '#0084C2' }}
                               onClick={() => handleView(user._id)}
+                              onMouseOver={e => (e.currentTarget.style.color = '#005A9C')}
+                              onMouseOut={e => (e.currentTarget.style.color = '#0084C2')}
                             >
                               <Eye size={18} />
                             </button>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Mail, Lock } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -7,6 +7,7 @@ import Input from '../ui/Input';
 import Button from '../ui/Button';
 import { LoginData } from '../../types';
 import { toast } from 'react-toastify';
+
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -19,25 +20,15 @@ const LoginForm: React.FC = () => {
     formState: { errors }
   } = useForm<LoginData>();
 
-
   const onSubmit = async (data: LoginData) => {
     setIsLoading(true);
     setError('');
 
-    if (data.email === 'admin@gmail.com' && data.password === 'admin@123') {
-      try {
-        await login(data.email, data.password);
-        navigate('/dashboard');
-      } catch (error) {
-        toast.error('Login failed');
-      }
-    } else {
-      try {
-        await login(data.email, data.password);
-        navigate('/dashboard');
-      } catch (error) {
-        toast.error('Invalid email or password. Please try again.');
-      }
+    try {
+      await login(data.email, data.password);
+      navigate('/dashboard');
+    } catch (error) {
+      toast.error('Invalid email or password. Please try again.');
     }
 
     setIsLoading(false);
@@ -46,7 +37,7 @@ const LoginForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 font-serif">
       {error && (
-        <div className="p-3 bg-error-50 border border-error-200 text-error-600 rounded-md">
+        <div className="p-3 bg-red-100 border border-red-300 text-red-600 rounded-md">
           {error}
         </div>
       )}
@@ -88,15 +79,15 @@ const LoginForm: React.FC = () => {
           fullWidth
         />
       </div>
+
       <Button
         type="submit"
-        className="w-full bg-teal-400"
+        variant="custom" // This uses the same color as the homepage button
+        fullWidth
         isLoading={isLoading}
       >
         Sign In
       </Button>
-
-
     </form>
   );
 };

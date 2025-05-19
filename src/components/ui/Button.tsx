@@ -37,6 +37,8 @@ const Button = <C extends React.ElementType = 'button'>({
     outline: 'border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-900',
     ghost: 'bg-transparent hover:bg-gray-100 text-gray-900',
     link: 'bg-transparent underline-offset-4 hover:underline text-primary-600 hover:text-primary-700',
+    custom: 'bg-[#0084C2] text-white hover:bg-[#1B9BD7] active:bg-[#006B9F]',
+
   };
 
   const sizes = {
