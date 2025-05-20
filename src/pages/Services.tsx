@@ -52,9 +52,7 @@ const Services: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center text-xs pt-4 border-t" style={{ color: '#0084C2' }}>
-            &copy; {new Date().getFullYear()} Car Registration Portal. All rights reserved.
-          </div>
+         
         </div>
       </div>
       <Footer/>
