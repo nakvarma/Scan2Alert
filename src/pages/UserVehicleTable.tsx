@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
 import { Trash, ChevronDown, ChevronUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const UserVehicleDetails = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -181,12 +182,18 @@ const UserVehicleDetails = () => {
                         <div className="mt-4">
                           <h4 className="font-semibold">Complaints:</h4>
                           {vehicle.complaints.map((complaint: any, complaintIndex: number) => (
-                            <div key={complaintIndex} className="mt-2 px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200 transition">
-                              <p><strong>Complaint:</strong> {complaint.complaint}</p>
+                            <motion.div
+                              key={complaintIndex}
+                              className="mt-2 px-4 py-2 rounded-md bg-[#E0F2FB] hover:bg-[#B3E0FF] transition cursor-pointer"
+                              whileHover={{ scale: 1.0125 }}
+                              whileTap={{ scale: 0.99 }}
+                              transition={{ duration: 0.14, ease: 'easeOut' }}
+                            >
+                              <p className="font-semibold text-[#0084C2]"><strong>Complaint:</strong> {complaint.complaint}</p>
                               <p><strong>By:</strong> {complaint.complainedBy}</p>
                               <p><strong>Location:</strong> {complaint.location}</p>
                               <p><strong>Date:</strong> {new Date(complaint.at).toLocaleString()}</p>
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
                       ) : (
