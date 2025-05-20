@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './NavBar';
+import Footer from './Footer';
 
 const Services: React.FC = () => {
   const services = [
@@ -56,6 +57,7 @@ const Services: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

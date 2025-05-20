@@ -23,8 +23,8 @@ const Navbar = () => {
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
     { label: 'Contact Us', path: '/contact' },
-    { label: 'Terms & Conditions', path: '/terms' },
-    { label: 'Privacy Policy', path: '/privacy' },
+    { label: 'Start Registration', path: '/' },
+
   ];
 
   return (
@@ -91,6 +91,7 @@ const Navbar = () => {
               </button>
             </>
           )}
+          
         </div>
       </div>
 

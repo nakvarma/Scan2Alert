@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "./NavBar";
 import { Trash, ChevronDown, ChevronUp } from "lucide-react";
+import Footer from "./Footer";
 
 const UserVehicleDetails = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -210,6 +211,7 @@ const UserVehicleDetails = () => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

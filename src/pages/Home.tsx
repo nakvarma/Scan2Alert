@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from './NavBar';
+import Footer from './Footer';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -15,9 +16,9 @@ const Home: React.FC = () => {
   ];
 
   const parkingImages = [
-    '/assets/mk.jpg',
-    '/assets/willy.jpg',
-    '/assets/chris.jpg'
+    '/assets/mk.png',
+    '/assets/willy.png',
+    '/assets/chris.png'
   ];
 
   return (
@@ -33,7 +34,7 @@ const Home: React.FC = () => {
 
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
         <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-8 md:p-10 space-y-12 transform hover:scale-105 transition-all duration-700 ease-in-out">
-          <div className="text-center">
+          {/* <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0084C2] mb-6">
               Welcome to the Car Registration Portal
             </h1>
@@ -57,11 +58,11 @@ const Home: React.FC = () => {
             >
               Start Registration
             </motion.button>
-          </div>
+          </div> */}
 
           <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-12">
             {parkingImages.map((src, index) => (
-              <div key={index} className="rounded-2xl overflow-hidden shadow-lg h-64 w-full flex items-center justify-center bg-gray-100">
+              <div key={index} className="rounded-2xl overflow-hidden shadow-lg  w-full flex items-center justify-center bg-gray-100">
                 <img src={src} alt={`Parking Issue ${index + 1}`} className="object-cover w-full h-full" />
               </div>
             ))}
@@ -90,7 +91,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+<Footer/>    </div>
   );
 };
 

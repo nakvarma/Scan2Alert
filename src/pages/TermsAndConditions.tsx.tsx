@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './NavBar';
+import Footer from './Footer';
 
 const TermsAndConditions: React.FC = () => {
     const terms = [
@@ -56,6 +57,7 @@ const TermsAndConditions: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

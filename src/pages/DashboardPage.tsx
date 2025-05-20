@@ -3,6 +3,7 @@ import { Eye, Trash } from 'lucide-react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "./NavBar";
+import Footer from "./Footer";
 
 const DashboardPage = () => {
   interface Registration {
@@ -130,128 +131,133 @@ const DashboardPage = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col  bg-gray-100 overflow-x-hidden" style={{ backgroundColor: '#fffffff', }} >
       <Navbar />
-      <div className="max-w-5xl mx-auto p-6" style={{ backgroundColor: '#E6F0FA', marginTop: '2.5rem' }}>
-        <div className="mb-6 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-          <input
-            type="text"
-            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
-            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
-            placeholder="Search by phone or name"
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
 
-          <input
-            type="date"
-            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
-            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
-            value={startDate}
-            onChange={handleStartDateChange}
-            max={today}
-          />
+      <div className="flex-1">
+        <div className="max-w-5xl mx-auto p-6" style={{ backgroundColor: '#FFFFFFF', marginTop: '2.5rem' }}>
+          <div className="mb-6 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+            <input
+              type="text"
+              className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
+              style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
+              placeholder="Search by phone or name"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
 
-          <input
-            type="date"
-            className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
-            style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
-            value={endDate}
-            onChange={handleEndDateChange}
-            max={today}
-          />
-        </div>
+            <input
+              type="date"
+              className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
+              style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
+              value={startDate}
+              onChange={handleStartDateChange}
+              max={today}
+            />
 
-        <div className="space-y-4 md:hidden">
-          {filteredRegistrations.map((user, userIndex) =>
-            user.vehicles.map((vehicle, vehicleIndex) => (
-              <div
-                key={`${user._id}-${vehicleIndex}`}
-                className="bg-white rounded-lg shadow p-4 text-sm"
-              >
-                {vehicleIndex === 0 && (
-                  <>
-                    <p><span className="font-semibold">No:</span> {userIndex + 1}</p>
-                    <p><span className="font-semibold">Phone:</span> {user.phone}</p>
-                    <p><span className="font-semibold">Name:</span> {user.name || "-"}</p>
-                    <p><span className="font-semibold">Date:</span> {new Date(user.createdAt).toLocaleString()}</p>
-                    <div className="flex justify-between mt-2">
-                      <button
-                        onClick={() => handleDelete(user._id)}
-                        className="text-red-600 hover:text-red-800 flex items-center"
-                      >
-                        <Trash size={16} className="mr-1" /> Delete
-                      </button>
-                      <button
-                        onClick={() => handleView(user._id)}
-                        className="flex items-center"
-                        style={{ color: '#0084C2' }}
-                      >
-                        <Eye size={16} className="mr-1" /> View
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))
-          )}
-        </div>
+            <input
+              type="date"
+              className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none w-full md:max-w-xs"
+              style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
+              value={endDate}
+              onChange={handleEndDateChange}
+              max={today}
+            />
+          </div>
 
-        <div className="hidden max-full md:flex justify-center">
-          <div className="w-full max-w-5xl overflow-x-auto bg-white rounded-lg shadow-md">
-            <table className="min-w-full">
-              <thead style={{ backgroundColor: '#0084C2', color: 'white', fontSize: '0.875rem' }}>
-                <tr>
-                  <th className="py-3 px-4 text-left">No</th>
-                  <th className="py-3 px-4 text-left">Phone</th>
-                  <th className="py-3 px-4 text-left">Name</th>
-                  <th className="py-3 px-4 text-left">Date & Time</th>
-                  <th className="py-3 px-4 text-left">Delete</th>
-                  <th className="py-3 px-4 text-left">View</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-700 text-sm">
-                {filteredRegistrations.map((user, userIndex) =>
-                  user.vehicles.map((vehicle, vehicleIndex) => (
-                    <tr key={`${user._id}-${vehicleIndex}`} className="border-t hover:bg-gray-100">
-                      {vehicleIndex === 0 && (
-                        <>
-                          <td className="py-2 px-4" rowSpan={user.vehicles.length}>{userIndex + 1}</td>
-                          <td className="py-2 px-4" rowSpan={user.vehicles.length}>{user.phone}</td>
-                          <td className="py-2 px-4" rowSpan={user.vehicles.length}>{user.name || "-"}</td>
-                          <td className="py-2 px-4 whitespace-nowrap" rowSpan={user.vehicles.length}>
-                            {new Date(user.createdAt).toLocaleString()}
-                          </td>
-                          <td className="py-2 px-4" rowSpan={user.vehicles.length}>
-                            <button
-                              style={{ color: '#D14343' }}
-                              onClick={() => handleDelete(user._id)}
-                              onMouseOver={e => (e.currentTarget.style.color = '#7B1E1E')}
-                              onMouseOut={e => (e.currentTarget.style.color = '#D14343')}
-                            >
-                              <Trash size={18} />
-                            </button>
-                          </td>
-                          <td className="py-2 px-4" rowSpan={user.vehicles.length}>
-                            <button
-                              style={{ color: '#0084C2' }}
-                              onClick={() => handleView(user._id)}
-                              onMouseOver={e => (e.currentTarget.style.color = '#005A9C')}
-                              onMouseOut={e => (e.currentTarget.style.color = '#0084C2')}
-                            >
-                              <Eye size={18} />
-                            </button>
-                          </td>
-                        </>
-                      )}
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+          <div className="space-y-4 md:hidden">
+            {filteredRegistrations.map((user, userIndex) =>
+              user.vehicles.map((vehicle, vehicleIndex) => (
+                <div
+                  key={`${user._id}-${vehicleIndex}`}
+                  className="bg-white rounded-lg shadow p-4 text-sm"
+                >
+                  {vehicleIndex === 0 && (
+                    <>
+                      <p><span className="font-semibold">No:</span> {userIndex + 1}</p>
+                      <p><span className="font-semibold">Phone:</span> {user.phone}</p>
+                      <p><span className="font-semibold">Name:</span> {user.name || "-"}</p>
+                      <p><span className="font-semibold">Date:</span> {new Date(user.createdAt).toLocaleString()}</p>
+                      <div className="flex justify-between mt-2">
+                        <button
+                          onClick={() => handleDelete(user._id)}
+                          className="text-red-600 hover:text-red-800 flex items-center"
+                        >
+                          <Trash size={16} className="mr-1" /> Delete
+                        </button>
+                        <button
+                          onClick={() => handleView(user._id)}
+                          className="flex items-center"
+                          style={{ color: '#0084C2' }}
+                        >
+                          <Eye size={16} className="mr-1" /> View
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="hidden max-full md:flex justify-center">
+            <div className="w-full max-w-5xl overflow-x-auto bg-white rounded-lg shadow-md">
+              <table className="min-w-full">
+                <thead style={{ backgroundColor: '#0084C2', color: 'white', fontSize: '0.875rem' }}>
+                  <tr>
+                    <th className="py-3 px-4 text-left">No</th>
+                    <th className="py-3 px-4 text-left">Phone</th>
+                    <th className="py-3 px-4 text-left">Name</th>
+                    <th className="py-3 px-4 text-left">Date & Time</th>
+                    <th className="py-3 px-4 text-left">Delete</th>
+                    <th className="py-3 px-4 text-left">View</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700 text-sm">
+                  {filteredRegistrations.map((user, userIndex) =>
+                    user.vehicles.map((vehicle, vehicleIndex) => (
+                      <tr key={`${user._id}-${vehicleIndex}`} className="border-t hover:bg-gray-100">
+                        {vehicleIndex === 0 && (
+                          <>
+                            <td className="py-2 px-4" rowSpan={user.vehicles.length}>{userIndex + 1}</td>
+                            <td className="py-2 px-4" rowSpan={user.vehicles.length}>{user.phone}</td>
+                            <td className="py-2 px-4" rowSpan={user.vehicles.length}>{user.name || "-"}</td>
+                            <td className="py-2 px-4 whitespace-nowrap" rowSpan={user.vehicles.length}>
+                              {new Date(user.createdAt).toLocaleString()}
+                            </td>
+                            <td className="py-2 px-4" rowSpan={user.vehicles.length}>
+                              <button
+                                style={{ color: '#D14343' }}
+                                onClick={() => handleDelete(user._id)}
+                                onMouseOver={e => (e.currentTarget.style.color = '#7B1E1E')}
+                                onMouseOut={e => (e.currentTarget.style.color = '#D14343')}
+                              >
+                                <Trash size={18} />
+                              </button>
+                            </td>
+                            <td className="py-2 px-4" rowSpan={user.vehicles.length}>
+                              <button
+                                style={{ color: '#0084C2' }}
+                                onClick={() => handleView(user._id)}
+                                onMouseOver={e => (e.currentTarget.style.color = '#005A9C')}
+                                onMouseOut={e => (e.currentTarget.style.color = '#0084C2')}
+                              >
+                                <Eye size={18} />
+                              </button>
+                            </td>
+                          </>
+                        )}
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
