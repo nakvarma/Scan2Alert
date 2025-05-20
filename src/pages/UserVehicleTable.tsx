@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "./NavBar";
-import { Trash, ChevronDown, ChevronUp } from "lucide-react";
 import Footer from "./Footer";
+import { Trash, ChevronDown, ChevronUp } from "lucide-react";
 
 const UserVehicleDetails = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -18,6 +18,7 @@ const UserVehicleDetails = () => {
   useEffect(() => {
     fetchUserDetails();
   }, [userId]);
+
   useEffect(() => {
     filterVehicles();
   }, [searchVehicleNumber, startDate, endDate, userDetails]);
@@ -83,19 +84,8 @@ const UserVehicleDetails = () => {
           fill="none"
           viewBox="0 0 24 24"
         >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          ></circle>
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-          ></path>
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
         </svg>
         <p className="text-center font-serif text-lg text-gray-700">Loading...</p>
       </div>
@@ -103,115 +93,118 @@ const UserVehicleDetails = () => {
   }
 
   return (
-    <div>
-      <Navbar />
-      <div className="max-w-6xl mx-auto p-6 bg-gray-50">
-        <h1 className="text-3xl font-bold text-center mb-8 text-black font-serif">Car Vehicle Details</h1>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Navbar */}
+      <div className="shrink-0">
+        <Navbar />
+      </div>
 
-        <div className="mb-6 flex flex-wrap gap-4 justify-center items-center">
-          <input
-            type="text"
-            className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
-            placeholder="Search by Vehicle Number..."
-            value={searchVehicleNumber}
-            onChange={(e) => setSearchVehicleNumber(e.target.value)}
-          />
-          <input
-            type="date"
-            className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-          <input
-            type="date"
-            className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            max={new Date().toISOString().split('T')[0]}
-          />
-        </div>
+      {/* Content Area */}
+      <div className="flex-1 px-4 py-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl font-bold text-center mb-8 text-black">Car Vehicle Details</h1>
 
-        {userDetails && (
-          <>
-            <h2 className="text-2xl font-semibold text-center text-black font-serif uppercase">
-              {userDetails.name}
-            </h2>
-            <p className="text-center text-lg mt-2">{userDetails.phone}</p>
+          <div className="mb-6 flex flex-wrap gap-4 justify-center items-center">
+            <input
+              type="text"
+              className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
+              placeholder="Search by Vehicle Number..."
+              value={searchVehicleNumber}
+              onChange={(e) => setSearchVehicleNumber(e.target.value)}
+            />
+            <input
+              type="date"
+              className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+            <input
+              type="date"
+              className="p-3 w-full max-w-xs rounded-md border border-gray-300 bg-white text-sm"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              max={new Date().toISOString().split('T')[0]}
+            />
+          </div>
 
-            <h3 className="mt-6 text-xl font-semibold font-serif">Vehicles</h3>
-            {filterVehicles().map((vehicle: any, index: number) => (
-              <div key={index} className="mt-6 border-b-2 pb-4 shadow-lg rounded-md bg-white p-4">
-                <div className="flex items-center justify-between cursor-pointer" onClick={() => toggleVehicleDetails(index)}>
-                  <h4 className="text-lg font-medium text-black">{vehicle.number}</h4>
-                  <span className="relative group">
+          {userDetails && (
+            <>
+              <h2 className="text-2xl font-semibold text-center text-black uppercase">
+                {userDetails.name}
+              </h2>
+              <p className="text-center text-lg mt-2">{userDetails.phone}</p>
+
+              <h3 className="mt-6 text-xl font-semibold">Vehicles</h3>
+              {filterVehicles().map((vehicle: any, index: number) => (
+                <div key={index} className="mt-6 border-b-2 pb-4 shadow-lg rounded-md bg-white p-4">
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => toggleVehicleDetails(index)}
+                  >
+                    <h4 className="text-lg font-medium text-black">{vehicle.number}</h4>
                     {selectedVehicle === index ? (
-                      <ChevronUp size={20} className="text-gray-600 transition-transform duration-300" />
+                      <ChevronUp size={20} className="text-gray-600" />
                     ) : (
-                      <ChevronDown size={20} className="text-gray-600 transition-transform duration-300" />
-                    )}
-                    <span className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 bg-white px-2 py-1 rounded shadow-lg text-black text-xs whitespace-nowrap">
-                      {selectedVehicle === index ? "Hide Details" : "Show Details"}
-                    </span>
-                  </span>
-                </div>
-
-                {selectedVehicle === index && (
-                  <div className="mt-4 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <strong className="pr-2 font-serif">Status:</strong>
-                        <span
-                          className={`font-serif px-2 py-1 rounded-md inline-block ${vehicle.status === "registered"
-                            ? "bg-green-200 text-green-800"
-                            : vehicle.status === "complained"
-                              ? "bg-red-200 text-red-800"
-                              : "bg-gray-200 text-gray-800"
-                            }`}
-                        >
-                          {vehicle.status}
-                        </span>
-                      </div>
-                      <button
-                        className="text-red-600 hover:text-red-800"
-                        onClick={() => handleDelete(userId, vehicle._id)}
-                      >
-                        <Trash size={18} />
-                      </button>
-                    </div>
-
-                    <p className="font-serif">
-                      <strong className="pr-2">Location:</strong>
-                      {vehicle.location}
-                    </p>
-
-                    {vehicle.complaints?.length > 0 ? (
-                      <div className="mt-4">
-                        <h4 className="font-semibold font-serif">Complaints:</h4>
-                        {vehicle.complaints.map((complaint: any, complaintIndex: number) => (
-                          <div key={complaintIndex} className="mt-2  px-5 hover:scale-105 transition-transform duration-200">
-                            <div
-                              className="cursor-pointer p-3 rounded-lg shadow-md hover:bg-gray-400"
-                              onClick={() => toggleComplaintDetails(complaintIndex)}
-                            >
-                              <p className="font-serif"><strong>Complaint:</strong> {complaint.complaint}</p>
-                              <p><strong className="font-serif">By:</strong> {complaint.complainedBy}</p>
-                              <p><strong className="font-serif">Location:</strong> {complaint.location}</p>
-                              <p><strong className="font-serif">Date:</strong> {new Date(complaint.at).toLocaleString()}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-gray-600 font-serif">No complaints for this vehicle.</p>
+                      <ChevronDown size={20} className="text-gray-600" />
                     )}
                   </div>
-                )}
-              </div>
-            ))}
-          </>
-        )}
+
+                  {selectedVehicle === index && (
+                    <div className="mt-4 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <strong>Status:</strong>{" "}
+                          <span
+                            className={`px-2 py-1 rounded-md inline-block ${vehicle.status === "registered"
+                              ? "bg-green-200 text-green-800"
+                              : vehicle.status === "complained"
+                                ? "bg-red-200 text-red-800"
+                                : "bg-gray-200 text-gray-800"
+                              }`}
+                          >
+                            {vehicle.status}
+                          </span>
+                        </div>
+                        <button
+                          className="text-red-600 hover:text-red-800"
+                          onClick={() => handleDelete(userId, vehicle._id)}
+                        >
+                          <Trash size={18} />
+                        </button>
+                      </div>
+
+                      <p>
+                        <strong>Location:</strong> {vehicle.location}
+                      </p>
+
+                      {vehicle.complaints?.length > 0 ? (
+                        <div className="mt-4">
+                          <h4 className="font-semibold">Complaints:</h4>
+                          {vehicle.complaints.map((complaint: any, complaintIndex: number) => (
+                            <div key={complaintIndex} className="mt-2 px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200 transition">
+                              <p><strong>Complaint:</strong> {complaint.complaint}</p>
+                              <p><strong>By:</strong> {complaint.complainedBy}</p>
+                              <p><strong>Location:</strong> {complaint.location}</p>
+                              <p><strong>Date:</strong> {new Date(complaint.at).toLocaleString()}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-gray-600">No complaints for this vehicle.</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
-      <Footer />
+
+      {/* Footer at Bottom */}
+      <div className="shrink-0">
+        <Footer />
+      </div>
     </div>
   );
 };

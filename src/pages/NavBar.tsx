@@ -23,8 +23,7 @@ const Navbar = () => {
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
     { label: 'Contact Us', path: '/contact' },
-    { label: 'Start Registration', path: '/' },
-
+   
   ];
 
   return (
@@ -55,43 +54,42 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
-            <>
-              <button
-                onClick={handleSignOut}
-                className="flex items-center text-white font-semibold text-lg hover:text-blue-100 transition-all"
-              >
-                <LogOut size={20} className="mr-2" />
-                Sign Out
-              </button>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden text-white font-semibold text-lg"
-              >
-                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
-              </button>
-            </>
+                   <div className="flex items-center">
+  <button
+    onClick={handleSignOut}
+    className="flex items-center text-white font-semibold text-lg hover:text-blue-100 transition-all"
+  >
+    <LogOut size={20} className="mr-2" />
+    Sign Out
+  </button>
+
+  <button
+                onClick={() => navigate('/')}
+    className="ml-2 text-white font-semibold text-lg hover:text-blue-100 transition-all"
+  >
+    | 
+    Start Registration
+  </button>
+</div>
           ) : (
-            <>
-              <button
-                onClick={() => navigate('/login')}
-                className="flex items-center text-white font-semibold text-lg hover:text-blue-100 transition-all"
-              >
-                <LogIn size={20} className="mr-2" />
-                Sign In
-              </button>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden text-white font-semibold text-lg"
-              >
-                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'rotate-45' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white mb-2 ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white ${isMenuOpen ? '-rotate-45' : ''}`} />
-              </button>
-            </>
+            <div className="flex items-center">
+  <button
+    onClick={() => navigate('/login')}
+    className="flex items-center text-white font-semibold text-lg hover:text-blue-100 transition-all"
+  >
+    <LogIn size={20} className="mr-2" />
+    Sign In
+  </button>
+  
+  <button
+    onClick={handleCarRegistration}
+    className="ml-2 text-white font-semibold text-lg hover:text-blue-100 transition-all"
+  >
+    | Car Registration
+  </button>
+</div>
+
           )}
-          
         </div>
       </div>
 
