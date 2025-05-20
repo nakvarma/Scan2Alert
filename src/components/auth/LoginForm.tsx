@@ -38,8 +38,7 @@ const LoginForm: React.FC = () => {
     <div className="space-y-6 font-serif">
       <div
         className="flex items-center cursor-pointer text-[#0084C2] hover:text-blue-800 transition duration-200 w-max"
-        onClick={() => navigate('/')}
-      >
+onClick={() => window.location.href = '/'}      >
         <ArrowLeft className="h-5 w-5 mr-1" />
         <span className="text-sm font-medium">Back to Home</span>
       </div>

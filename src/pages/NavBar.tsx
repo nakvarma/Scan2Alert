@@ -82,10 +82,11 @@ const Navbar = () => {
   </button>
   
   <button
-    onClick={handleCarRegistration}
+                onClick={() => navigate('/')}
     className="ml-2 text-white font-semibold text-lg hover:text-blue-100 transition-all"
   >
-    | Car Registration
+    | 
+    Start Registration
   </button>
 </div>
 
