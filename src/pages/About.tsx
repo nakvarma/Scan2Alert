@@ -53,10 +53,10 @@ const About: React.FC = () => {
         <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold" style={{ color: '#0084C2' }}>
-              About Our Car Registration Portal
+             About Scan2Alert
             </h1>
             <p className="mt-2 text-sm sm:text-base" style={{ color: '#0084C2' }}>
-              Simplifying the car registration process through technology.
+           Park In Peace
             </p>
             <div className="mt-6 mb-4 max-w-2xl mx-auto">
               <motion.div
@@ -77,7 +77,7 @@ const About: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative w-full p-4 sm:p-6 rounded-xl shadow-md" style={{ backgroundColor: '#E0F2FB' }}>
+          {/* <div className="relative w-full p-4 sm:p-6 rounded-xl shadow-md" style={{ backgroundColor: '#E0F2FB' }}>
             <h2 className="text-lg sm:text-xl font-semibold text-center" style={{ color: '#0084C2' }}>
               Our Key Features
             </h2>
@@ -102,7 +102,7 @@ const About: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>

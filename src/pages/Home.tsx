@@ -60,13 +60,14 @@ const Home: React.FC = () => {
             </motion.button>
           </div> */}
 
-          <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-12">
+          {/* <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-12">
             {parkingImages.map((src, index) => (
               <div key={index} className="rounded-2xl overflow-hidden shadow-lg  w-full flex items-center justify-center bg-gray-100">
                 <img src={src} alt={`Parking Issue ${index + 1}`} className="object-cover w-full h-full" />
               </div>
             ))}
-          </Carousel>
+          </Carousel> */}
+          <img src="/assets/willy.png" alt="willy" />
 
           <div className="relative w-full overflow-hidden bg-[#E0F2FB] p-8 rounded-2xl shadow-xl">
             <h2 className="text-2xl font-semibold text-[#0084C2] text-center mb-6">

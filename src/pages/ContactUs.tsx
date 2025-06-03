@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './NavBar';
 import emailjs from 'emailjs-com';
 import Footer from './Footer';
+import { FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 
 const ContactUs: React.FC = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -117,8 +118,49 @@ const ContactUs: React.FC = () => {
                     {errorMessage && (
                         <div className="text-red-600 text-center font-medium">{errorMessage}</div>
                     )}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm sm:text-base">
+            <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+                <h2 className="text-lg font-semibold mb-2 text-[#0084C2]">Address</h2>
+                <p className="text-gray-700">
+                    01, 1st Floor, 8-3-833/167, Phase 2, Kamalapuri Colony, Sri Nagar Colony, Hyderabad, Telangana, 500073
+                </p>
+            </div>
+            <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+                <h2 className="text-lg font-semibold mb-2 text-[#0084C2]">Contact Number</h2>
+                <p className="text-gray-700">Cont. 9393088000</p>
+            </div>
+            {/* <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+                <h2 className="text-lg font-semibold mb-2 text-[#0084C2]">Email</h2>
+                <p className="text-gray-700">
+          </div> */}
+           <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+                <a
+          href="https://www.google.com/maps/place/VKC+PROJECTS/@17.4301183,78.4301038,21z/data=!4m6!3m5!1s0x3bcb91a54d4aceaf:0xee5fb12b5b7a1ee5!8m2!3d17.4300928!4d78.4302636!16s%2Fg%2F11h5s2v2ng?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          <FaMapMarkerAlt className="mr-2" />
+          View on Map
+        </a>
+        <h1>google Map</h1>
+            </div>
+          </div>
 
                 </div>
+                
+            </div> 
+            <div className='flex justify-center items-center flex-col space-y-4 p-6'>
+                
+   {/* <div className="p-4 max-w-md space-y-4"> */}
+      {/* Address */}
+     
+    {/* </div> */}
+      
+
+{/* <h1 className=' cursor-pointer '>
+<link rel="stylesheet" href="https://www.google.com/maps/place/VKC+PROJECTS/@17.4301183,78.4301038,21z/data=!4m6!3m5!1s0x3bcb91a54d4aceaf:0xee5fb12b5b7a1ee5!8m2!3d17.4300928!4d78.4302636!16s%2Fg%2F11h5s2v2ng?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"/>
+google Map</h1> */}
             </div>
             <Footer/>
         </div>
