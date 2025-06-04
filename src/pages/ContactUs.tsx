@@ -163,11 +163,37 @@ const ContactUs: React.FC = () => {
           View on Map
         </a>
         <h1>google Map</h1>
-            </div> */}
-          </div>
+            </div>
+          </div> */}
 
                 </div>
-                
+               <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+  {/* <a
+    href="https://www.google.com/maps/place/VKC+PROJECTS/@17.4301183,78.4301038,21z/data=!4m6!3m5!1s0x3bcb91a54d4aceaf:0xee5fb12b5b7a1ee5!8m2!3d17.4300928!4d78.4302636!16s%2Fg%2F11h5s2v2ng?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4"
+  >
+    <FaMapMarkerAlt className="mr-2 text-xl" />
+    View on Map
+  </a> */}
+
+  {/* <h1 className="text-lg font-semibold text-[#0084C2] mb-2">Google Map</h1> */}
+
+  <div className="w-full h-[300px] rounded-lg overflow-hidden">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2691577492946!2d78.4301038!3d17.4301183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91a54d4aceaf%3A0xee5fb12b5b7a1ee5!2sVKC%20PROJECTS!5e0!3m2!1sen!2sin!4v1717493200000!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+
+          </div>
             </div> 
             <div className='flex justify-center items-center flex-col space-y-4 p-6'>
                 

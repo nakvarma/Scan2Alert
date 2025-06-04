@@ -7,12 +7,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Home: React.FC = () => {
   const features = [
-    { title: 'Secure & Reliable', text: 'Your data is protected with modern encryption and multi-layer security protocols.' },
-    { title: 'Fast Process', text: 'Complete your registration in minutes with our easy-to-use system.' },
-    { title: 'Data Privacy', text: 'We follow strict data privacy regulations to keep your information secure.' },
-    { title: 'Comprehensive Verification', text: 'Multi-step verification to prevent unauthorized access.' },
-    { title: 'Advanced Encryption', text: 'End-to-end encryption for maximum data protection.' },
-    { title: '24/7 Support', text: 'Our dedicated support team is always here to assist you.' }
+    { title: 'Instant Communication with No App Needed', text: 'Unlike traditional vehicle alert systems, Scan2Alert uses WhatsApp, which almost everyone already has. No new apps to install, no learning curve — just scan and message' },
+    { title: 'Privacy by Design', text: 'Your personal phone number is never displayed to the person scanning the QR code.Communication is initiated securely through WhatsApp, and you remain anonymous unless you choose to reply.' },
+    { title: 'Smart, Simple, and Effective', text: 'Our system is designed to be lightweight and intuitive. Register your vehicle, stick a QR code on your car, and you’re ready to go. It’s the modern answer to passive-aggressive notes on windshields.' },
+    { title: 'Works Everywhere ', text: 'Whether you are parked in a gated community, at a mall, or in a busy city — Scan2Alert works throughout India as long as your phone is connected to the internet.' },
+    // { title: 'Advanced Encryption', text: 'End-to-end encryption for maximum data protection.' },
+    // { title: '24/7 Support', text: 'Our dedicated support team is always here to assist you.' }
   ];
 
   const parkingImages = [

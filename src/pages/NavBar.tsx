@@ -82,14 +82,14 @@ const Navbar = () => {
     <LogIn size={20} className="mr-2" />
     Sign In
   </button>
-  
+{/*   
   <button
                 onClick={() => navigate('/')}
     className="ml-2 text-white font-semibold text-lg hover:text-blue-100 transition-all"
   >
     | 
     Start Registration
-  </button>
+  </button> */}
 </div>
 
           )}
