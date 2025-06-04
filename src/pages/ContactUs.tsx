@@ -149,6 +149,14 @@ const ContactUs: React.FC = () => {
   <a href="mailto:info@scan2alert.in" className="text-gray-700 hover:text-blue-600">
     info@scan2alert.in
   </a>
+  
+</div>
+<div className="flex items-start space-x-2">
+  <FaEnvelope className="mt-1 text-[#0084C2]" />
+  <a href="mailto:info@scan2alert.in" className="text-gray-700 hover:text-blue-600">
+    nvsraju.itp@gmail.com
+  </a>
+  
 </div>
 
           </div> 
