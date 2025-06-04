@@ -127,7 +127,7 @@ const ContactUs: React.FC = () => {
                 <div className="flex items-start space-x-2">
   <FaMapMarkerAlt className="mt-1 text-5xl text-[#0084C2]" />
   <p className="text-gray-700">
-    01, 1st Floor, 8-3-833/167, Phase 2, Kamalapuri Colony, Sri Nagar Colony, Hyderabad, Telangana, 500073
+    101, 1st Floor, 8-3-833/167, Phase 2, Kamalapuri Colony, Sri Nagar Colony, Hyderabad, Telangana, 500073
   </p>
 </div>
 
@@ -167,18 +167,8 @@ const ContactUs: React.FC = () => {
           </div> */}
 
                 </div>
-               <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
-  {/* <a
-    href="https://www.google.com/maps/place/VKC+PROJECTS/@17.4301183,78.4301038,21z/data=!4m6!3m5!1s0x3bcb91a54d4aceaf:0xee5fb12b5b7a1ee5!8m2!3d17.4300928!4d78.4302636!16s%2Fg%2F11h5s2v2ng?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4"
-  >
-    <FaMapMarkerAlt className="mr-2 text-xl" />
-    View on Map
-  </a> */}
-
-  {/* <h1 className="text-lg font-semibold text-[#0084C2] mb-2">Google Map</h1> */}
+               {/* <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
+  
 
   <div className="w-full h-[300px] rounded-lg overflow-hidden">
     <iframe
@@ -191,7 +181,7 @@ const ContactUs: React.FC = () => {
       referrerPolicy="no-referrer-when-downgrade"
     ></iframe>
   </div>
-</div>
+</div> */}
 
           </div>
             </div> 
