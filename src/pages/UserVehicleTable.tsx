@@ -75,6 +75,7 @@ const UserVehicleDetails = () => {
       return matchesVehicleNumber && isWithinDateRange;
     });
   };
+    console.log("Filtered Vehicles:", filterVehicles());
 
   if (loading) {
     return (
@@ -136,6 +137,7 @@ const UserVehicleDetails = () => {
               <p className="text-center text-lg mt-2">{userDetails.phone}</p>
 
               <h3 className="mt-6 text-xl font-semibold">Vehicles</h3>
+              
               {filterVehicles().map((vehicle: any, index: number) => (
                 <div key={index} className="mt-6 border-b-2 pb-4 shadow-lg rounded-md bg-white p-4">
                   <div
@@ -177,6 +179,7 @@ const UserVehicleDetails = () => {
                       <p>
                         <strong>Location:</strong> {vehicle.location}
                       </p>
+                              <p><strong>Date:</strong> {new Date(vehicle.at).toLocaleString()}</p>
 
                       {vehicle.complaints?.length > 0 ? (
                         <div className="mt-4">
