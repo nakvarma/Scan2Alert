@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Mail, Lock, ArrowLeft } from 'lucide-react'; 
+import { Mail, Lock, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
     <div className="space-y-6 font-serif">
       <div
         className="flex items-center cursor-pointer text-[#0084C2] hover:text-blue-800 transition duration-200 w-max"
-onClick={() => window.location.href = '/'}      >
+        onClick={() => window.location.href = '/'}      >
         <ArrowLeft className="h-5 w-5 mr-1" />
         <span className="text-sm font-medium">Back to Home</span>
       </div>
@@ -90,7 +90,7 @@ onClick={() => window.location.href = '/'}      >
 
         <Button
           type="submit"
-          variant="custom"
+          variant="primary"
           fullWidth
           isLoading={isLoading}
         >

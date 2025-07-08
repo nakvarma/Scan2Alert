@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "./NavBar";
 import Footer from "./Footer";
+import { showConfirmToast } from "../utils/showConfirmToast";
+import { toast } from "react-toastify";
 
 const DashboardPage = () => {
   interface Registration {
@@ -20,6 +22,8 @@ const DashboardPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [addressQuery, setAddressQuery] = useState('');
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +44,7 @@ const DashboardPage = () => {
         start: startDate,
         end: endDate
       };
-      const response = await axios.get("https://api.scan2alert.in/api/registrations", { params });
+      const response = await axios.get("https://scan2alert.in/api/registrations", { params });
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
     } catch (error) {
@@ -50,42 +54,111 @@ const DashboardPage = () => {
     }
   };
 
+  // const filterRegistrations = () => {
+  //   const filtered = registrations.filter(user => {
+  //     const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
+  //     const matchesName = user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+  //     const start = startDate ? new Date(startDate) : null;
+  //     const end = endDate ? new Date(new Date(endDate).getTime() + 24 * 60 * 60 * 1000) : null;
+
+  //     const createdAt = new Date(user.createdAt);
+
+  //     const matchesDate = (
+  //       (!start || createdAt >= start) &&
+  //       (!end || createdAt < end)
+  //     );
+
+  //     return (matchesPhone || matchesName) && matchesDate;
+  //   });
+
+  //   setFilteredRegistrations(filtered);
+  // };
+
+
   const filterRegistrations = () => {
-    const filtered = registrations.filter(user => {
-      const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesName = user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase());
+  const filtered = registrations.filter(user => {
+    const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesName = user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const start = startDate ? new Date(startDate) : null;
-      const end = endDate ? new Date(new Date(endDate).getTime() + 24 * 60 * 60 * 1000) : null;
+    const start = startDate ? new Date(startDate) : null;
+    const end = endDate ? new Date(new Date(endDate).getTime() + 24 * 60 * 60 * 1000) : null;
 
-      const createdAt = new Date(user.createdAt);
+    const matchesComplaintLocation = user.vehicles.some(vehicle =>
+      vehicle.complaints?.some((complaint: any) =>
+        complaint.location && complaint.location.toLowerCase().includes(addressQuery.toLowerCase())
+      )
+    );
 
-      const matchesDate = (
-        (!start || createdAt >= start) &&
-        (!end || createdAt < end)
-      );
+    const hasComplaintInDateRange = user.vehicles.some(vehicle =>
+      vehicle.complaints?.some((complaint: any) => {
+        const complaintDate = new Date(complaint.at);
+        return (!start || complaintDate >= start) && (!end || complaintDate < end);
+      })
+    );
 
-      return (matchesPhone || matchesName) && matchesDate;
-    });
+    return (matchesPhone || matchesName) && hasComplaintInDateRange && (!addressQuery || matchesComplaintLocation);
+  });
 
-    setFilteredRegistrations(filtered);
-  };
+  setFilteredRegistrations(filtered);
+};
+
+// const filterRegistrations = () => {
+//   const filtered = registrations.filter(user => {
+//     const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
+//     const matchesName = user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+//     const start = startDate ? new Date(startDate) : null;
+//     const end = endDate ? new Date(new Date(endDate).getTime() + 24 * 60 * 60 * 1000) : null;
+
+//     // Check if ANY complaint in ANY vehicle falls in the date range
+//     const hasComplaintInDateRange = user.vehicles.some(vehicle =>
+//       vehicle.complaints?.some((complaint: any) => {
+//         const complaintDate = new Date(complaint.at);
+//         return (!start || complaintDate >= start) && (!end || complaintDate < end);
+//       })
+//     );
+
+//     return (matchesPhone || matchesName) && hasComplaintInDateRange;
+//   });
+
+//   setFilteredRegistrations(filtered);
+// };
 
   const handleView = (userId: string) => {
     navigate(`/view/${userId}`);
   };
 
-  const handleDelete = async (userId: string) => {
-    try {
-      const confirmed = window.confirm("Are you sure you want to delete this vehicle-Owner?");
-      if (!confirmed) return;
-      await axios.delete(`https://api.scan2alert.in/api/registrations/${userId}`);
-      setRegistrations(registrations.filter((user) => user._id !== userId));
-      setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
-    } catch (error) {
-      console.error("Error deleting user:", error);
+  // const handleDelete = (userId: string) => {
+  //   showConfirmToast(
+  //     "Are you sure you want to delete this vehicle-Owner?",
+  //     async () => {
+  //       try {
+  //         await axios.delete(`https://scan2alert.in/api/registrations/${userId}`);
+  //         setRegistrations(registrations.filter((user) => user._id !== userId));
+  //         setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
+  //       } catch (error) {
+  //         console.error("Error deleting user:", error);
+  //       }
+  //     }
+  //   );
+  // };
+const handleDelete = (userId: string, userName: string) => {
+  showConfirmToast(
+    `Are you sure you want to delete ${userName}?`,
+    async () => {
+      try {
+        await axios.delete(`https://scan2alert.in/api/registrations/${userId}`);
+        setRegistrations(registrations.filter((user) => user._id !== userId));
+        setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
+        toast.success(`${userName} deleted successfully`);
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        toast.error(`Failed to delete ${userName}`);
+      }
     }
-  };
+  );
+};
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -163,6 +236,15 @@ const DashboardPage = () => {
               onChange={handleEndDateChange}
               max={today}
             />
+            <input
+  type="text"
+  className="p-3 rounded-md border bg-white text-sm shadow-sm focus:outline-none placeholder:text-gray-400 w-full md:max-w-xs"
+  style={{ borderColor: '#99B9E6', outlineColor: '#005A9C' }}
+  placeholder="Search by complaint address"
+  value={addressQuery}
+  onChange={(e) => setAddressQuery(e.target.value)}
+/>
+
           </div>
 
           <div className="space-y-4 md:hidden">
@@ -180,8 +262,9 @@ const DashboardPage = () => {
                       <p><span className="font-semibold">Date:</span> {new Date(user.createdAt).toLocaleString()}</p>
                       <div className="flex justify-between mt-2">
                         <button
-                          onClick={() => handleDelete(user._id)}
-                          className="text-red-600 hover:text-red-800 flex items-center"
+                          // onClick={() => handleDelete(user._id)}
+                        onClick={() => handleDelete(user._id, user.name || 'this user')}      
+                      className="text-red-600 hover:text-red-800 flex items-center"
                         >
                           <Trash size={16} className="mr-1" /> Delete
                         </button>
@@ -228,7 +311,8 @@ const DashboardPage = () => {
                             <td className="py-2 px-4" rowSpan={user.vehicles.length}>
                               <button
                                 style={{ color: '#D14343' }}
-                                onClick={() => handleDelete(user._id)}
+                                // onClick={() => handleDelete(user._id)}
+                                 onClick={() => handleDelete(user._id, user.name || 'this user')}
                                 onMouseOver={e => (e.currentTarget.style.color = '#7B1E1E')}
                                 onMouseOut={e => (e.currentTarget.style.color = '#D14343')}
                               >

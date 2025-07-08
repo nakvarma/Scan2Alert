@@ -5,6 +5,7 @@ import Navbar from "./NavBar";
 import Footer from "./Footer";
 import { Trash, ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { showConfirmToast } from "../utils/showConfirmToast";
 
 const UserVehicleDetails = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -26,7 +27,7 @@ const UserVehicleDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await axios.get(`https://api.scan2alert.in/api/registrations/${userId}`);
+      const response = await axios.get(`https://scan2alert.in/api/registrations/${userId}`);
       setUserDetails(response.data);
     } catch (error) {
       console.error("Error fetching user details:", error);
@@ -43,17 +44,41 @@ const UserVehicleDetails = () => {
     setSelectedComplaint(selectedComplaint === complaintIndex ? null : complaintIndex);
   };
 
-  const handleDelete = async (userId: string | undefined, _id: any) => {
-    if (!userId) return;
-    const confirmed = window.confirm("Are you sure you want to delete this vehicle?");
-    if (!confirmed) return;
-    try {
-      await axios.delete(`https://whatsappbot-nine.vercel.app/registrations/${userId}/vehicles/${_id}`);
-      await fetchUserDetails();
-    } catch (error) {
-      console.error("Error deleting vehicle:", error);
+  // const handleDelete = async (userId: string | undefined, _id: any) => {
+  //   if (!userId) return;
+  //   showConfirmToast(
+  //     "Are you sure you want to delete this vehicle?",
+  //     async () => {
+  //       try {
+  //         console.log(userId, _id);
+  //         await axios.delete(`https://scan2alert.in/api/registrations/${userId}/vehicles/${_id}`);
+  //         await fetchUserDetails();
+  //       } catch (error) {
+  //         console.error("Error deleting vehicle:", error);
+  //       }
+  //     }
+  //   );
+  // };
+const handleDelete = async (
+  userId: string | undefined,
+  vehicleId: string,
+  vehicleNumber: string
+) => {
+  if (!userId) return;
+
+  showConfirmToast(
+    `Are you sure you want to delete vehicle ${vehicleNumber}?`,
+    async () => {
+      try {
+        console.log(userId, vehicleId);
+        await axios.delete(`https://scan2alert.in/api/registrations/${userId}/vehicles/${vehicleId}`);
+        await fetchUserDetails();
+      } catch (error) {
+        console.error("Error deleting vehicle:", error);
+      }
     }
-  };
+  );
+};
 
   const filterVehicles = () => {
     if (!userDetails || !userDetails.vehicles) return [];
@@ -170,7 +195,8 @@ const UserVehicleDetails = () => {
                         </div>
                         <button
                           className="text-red-600 hover:text-red-800"
-                          onClick={() => handleDelete(userId, vehicle._id)}
+                          // onClick={() => handleDelete(userId, vehicle._id)}
+                            onClick={() => handleDelete(userId, vehicle._id, vehicle.number)}
                         >
                           <Trash size={18} />
                         </button>
@@ -179,6 +205,12 @@ const UserVehicleDetails = () => {
                       <p>
                         <strong>Location:</strong> {vehicle.location}
                       </p>
+                      {vehicle.dispatchAddress && (
+  <p>
+    <strong>DispatchAddress:</strong> {vehicle.dispatchAddress}
+  </p>
+)}
+
                               <p><strong>Date:</strong> {new Date(vehicle.at).toLocaleString()}</p>
 
                       {vehicle.complaints?.length > 0 ? (

@@ -15,11 +15,14 @@ import Faq from './pages/Faq';
 import HowItWorks from './pages/HowItWorks';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <AuthProvider>
       <div>
+        <ToastContainer position="top-right" autoClose={3000} />
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-3.5rem)]">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
