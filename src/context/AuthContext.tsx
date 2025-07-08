@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = useCallback(async (email: string, password: string) => {
     // ✅ Only allow specific email & password
-    if (email === 'admin@gmail.com' && password === '12345678') {
+    if (email === 'nak.varma@gmail.com' && password === 'arunvarma@1528') {
       setIsAuthenticated(true);
     } else {
       throw new Error('Invalid credentials');

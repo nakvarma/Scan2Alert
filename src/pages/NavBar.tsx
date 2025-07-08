@@ -75,13 +75,13 @@ const Navbar = () => {
 </div>
           ) : (
             <div className="flex items-center">
-  <button
+  {/* <button
     onClick={() => navigate('/login')}
     className="flex items-center text-white font-semibold text-lg hover:text-blue-100 transition-all"
   >
     <LogIn size={20} className="mr-2" />
     Sign In
-  </button>
+  </button> */}
 {/*   
   <button
                 onClick={() => navigate('/')}

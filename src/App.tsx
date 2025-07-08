@@ -22,7 +22,17 @@ function App() {
   return (
     <AuthProvider>
       <div>
-        <ToastContainer position="top-right" autoClose={3000} />
+<ToastContainer 
+  position="top-center"   // 👈 Change this
+  autoClose={3000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-3.5rem)]">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
