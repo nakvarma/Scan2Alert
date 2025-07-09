@@ -430,6 +430,71 @@ const DashboardPage = () => {
   };
 
  
+// const filterRegistrations = () => {
+//   const filtered = registrations
+//     .map(user => {
+//       const matchesPhone = user.phone && user.phone.toLowerCase().includes(searchQuery.toLowerCase());
+//       const matchesName = user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+//       const start = startDate ? new Date(startDate + 'T00:00:00') : null;
+//       const end = endDate ? new Date(endDate + 'T23:59:59') : null;
+
+//       const matchesComplaintLocation = user.vehicles.some(vehicle =>
+//         vehicle.complaints?.some((complaint: any) =>
+//           complaint.location && complaint.location.toLowerCase().includes(addressQuery.toLowerCase())
+//         )
+//       );
+
+//       const hasComplaintInDateRange = user.vehicles.some(vehicle =>
+//         vehicle.complaints?.some((complaint: any) => {
+//           const complaintDate = new Date(complaint.at);
+//           return (!start || complaintDate >= start) && (!end || complaintDate <= end);
+//         })
+//       );
+
+//       const createdAt = new Date(user.createdAt);
+//       const isCreatedInDateRange = (!start || createdAt >= start) && (!end || createdAt <= end);
+
+//       const matchesDate =
+//         (startDate || endDate)
+//           ? (isCreatedInDateRange || hasComplaintInDateRange)
+//           : true;
+
+//       // 🔍 Determine match type
+//       let matchType = '';
+
+//       // 🆕 Only new registration (no complaints)
+//       if (isCreatedInDateRange && !hasComplaintInDateRange) {
+//         matchType = '🆕 New Registration';
+
+//         // 📦 If any vehicle has dispatchAddress in new registration
+//         const hasDispatch = user.vehicles.some(v => v.dispatchAddress?.trim() !== '');
+//         if (hasDispatch) {
+//           matchType += ' 📦 Dispatch Required';
+//         }
+//       }
+
+//       // 📣 Only complaints in date range (not new registration)
+//       else if (!isCreatedInDateRange && hasComplaintInDateRange) {
+//         matchType = '📣 Complaint';
+//       }
+
+//       // 🆕📣 Both
+//       else if (isCreatedInDateRange && hasComplaintInDateRange) {
+//         matchType = '🆕 New Registration 📣 Complaint';
+//       }
+
+//       return (matchesPhone || matchesName) &&
+//         (!addressQuery || matchesComplaintLocation) &&
+//         matchesDate
+//         ? { ...user, matchType: matchType.trim() }
+//         : null;
+//     })
+//     .filter(Boolean);
+
+//   setFilteredRegistrations(filtered);
+// };
+
 const filterRegistrations = () => {
   const filtered = registrations
     .map(user => {
@@ -460,15 +525,14 @@ const filterRegistrations = () => {
           ? (isCreatedInDateRange || hasComplaintInDateRange)
           : true;
 
+      const hasDispatch = user.vehicles.some(v => v.dispatchAddress?.trim() !== '');
+
       // 🔍 Determine match type
       let matchType = '';
 
       // 🆕 Only new registration (no complaints)
       if (isCreatedInDateRange && !hasComplaintInDateRange) {
         matchType = '🆕 New Registration';
-
-        // 📦 If any vehicle has dispatchAddress in new registration
-        const hasDispatch = user.vehicles.some(v => v.dispatchAddress?.trim() !== '');
         if (hasDispatch) {
           matchType += ' 📦 Dispatch Required';
         }
@@ -476,12 +540,15 @@ const filterRegistrations = () => {
 
       // 📣 Only complaints in date range (not new registration)
       else if (!isCreatedInDateRange && hasComplaintInDateRange) {
-        matchType = '📣 Complaint in Date Range';
+        matchType = '📣 Complaint';
       }
 
-      // 🆕📣 Both
+      // 🆕📣 Both new registration & complaint
       else if (isCreatedInDateRange && hasComplaintInDateRange) {
         matchType = '🆕 New Registration 📣 Complaint';
+        if (hasDispatch) {
+          matchType += ' 📦 Dispatch Required';
+        }
       }
 
       return (matchesPhone || matchesName) &&
@@ -494,7 +561,6 @@ const filterRegistrations = () => {
 
   setFilteredRegistrations(filtered);
 };
-
 
   const handleDelete = (userId: string, userName: string) => {
     showConfirmToast(
