@@ -27,7 +27,7 @@ const UserVehicleDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await axios.get(`https://scan2alert.in/api/registrations/${userId}`);
+      const response = await axios.get(`http://localhost:5000/registrations/${userId}`);
       setUserDetails(response.data);
     } catch (error) {
       console.error("Error fetching user details:", error);
@@ -51,7 +51,7 @@ const UserVehicleDetails = () => {
   //     async () => {
   //       try {
   //         console.log(userId, _id);
-  //         await axios.delete(`https://scan2alert.in/api/registrations/${userId}/vehicles/${_id}`);
+  //         await axios.delete(`http://localhost:5000/registrations/${userId}/vehicles/${_id}`);
   //         await fetchUserDetails();
   //       } catch (error) {
   //         console.error("Error deleting vehicle:", error);
@@ -71,7 +71,7 @@ const handleDelete = async (
     async () => {
       try {
         console.log(userId, vehicleId);
-        await axios.delete(`https://scan2alert.in/api/registrations/${userId}/vehicles/${vehicleId}`);
+        await axios.delete(`http://localhost:5000/registrations/${userId}/vehicles/${vehicleId}`);
         await fetchUserDetails();
       } catch (error) {
         console.error("Error deleting vehicle:", error);
@@ -227,11 +227,12 @@ const handleDelete = async (
                               <p className="font-semibold text-[#0084C2]"><strong>Complaint:</strong> {complaint.complaint}</p>
                               <p><strong>By:</strong> {complaint.complainedBy}</p>
                               <p><strong>Location:</strong> {complaint.location}</p>
-                                {complaint.reply && (
+    {complaint.reply && (complaint.reply.message || complaint.reply.custom) && (
   <p>
-    <strong>Reply:</strong> {complaint.reply}
+    <strong>Reply:</strong> {complaint.reply.message || complaint.reply.custom}
   </p>
 )}
+
 
                               <p><strong>Date:</strong> {new Date(complaint.at).toLocaleString()}</p>
 

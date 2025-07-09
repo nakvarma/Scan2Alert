@@ -44,7 +44,7 @@
 //         start: startDate,
 //         end: endDate
 //       };
-//       const response = await axios.get("https://scan2alert.in/api/registrations", { params });
+//       const response = await axios.get("http://localhost:5000//registrations", { params });
 //       setRegistrations(response.data);
 //       setFilteredRegistrations(response.data);
 //     } catch (error) {
@@ -134,7 +134,7 @@
 //   //     "Are you sure you want to delete this vehicle-Owner?",
 //   //     async () => {
 //   //       try {
-//   //         await axios.delete(`https://scan2alert.in/api/registrations/${userId}`);
+//   //         await axios.delete(`http://localhost:5000//registrations/${userId}`);
 //   //         setRegistrations(registrations.filter((user) => user._id !== userId));
 //   //         setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
 //   //       } catch (error) {
@@ -148,7 +148,7 @@
 //     `Are you sure you want to delete ${userName}?`,
 //     async () => {
 //       try {
-//         await axios.delete(`https://scan2alert.in/api/registrations/${userId}`);
+//         await axios.delete(`http://localhost:5000//registrations/${userId}`);
 //         setRegistrations(registrations.filter((user) => user._id !== userId));
 //         setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
 //         toast.success(`${userName} deleted successfully`);
@@ -419,7 +419,7 @@ const DashboardPage = () => {
 
   const fetchRegistrations = async () => {
     try {
-      const response = await axios.get("https://scan2alert.in/api/registrations");
+      const response = await axios.get("http://localhost:5000/registrations");
       setRegistrations(response.data);
       setFilteredRegistrations(response.data);
     } catch (error) {
@@ -567,7 +567,7 @@ const filterRegistrations = () => {
       `Are you sure you want to delete ${userName}?`,
       async () => {
         try {
-          await axios.delete(`https://scan2alert.in/api/registrations/${userId}`);
+          await axios.delete(`http://localhost:5000/registrations/${userId}`);
           setRegistrations(registrations.filter((user) => user._id !== userId));
           setFilteredRegistrations(filteredRegistrations.filter((user) => user._id !== userId));
           toast.success(`${userName} deleted successfully`);
