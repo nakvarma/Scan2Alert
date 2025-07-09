@@ -227,11 +227,17 @@ const handleDelete = async (
                               <p className="font-semibold text-[#0084C2]"><strong>Complaint:</strong> {complaint.complaint}</p>
                               <p><strong>By:</strong> {complaint.complainedBy}</p>
                               <p><strong>Location:</strong> {complaint.location}</p>
-    {complaint.reply && (complaint.reply.message || complaint.reply.custom) && (
+  {complaint.reply && (
   <p>
-    <strong>Reply:</strong> {complaint.reply.message || complaint.reply.custom}
+    <strong>Reply:</strong>{" "}
+    {typeof complaint.reply.message === "string"
+      ? complaint.reply.message
+      : typeof complaint.reply.custom === "string"
+      ? complaint.reply.custom
+      : ""}
   </p>
 )}
+
 
 
                               <p><strong>Date:</strong> {new Date(complaint.at).toLocaleString()}</p>
