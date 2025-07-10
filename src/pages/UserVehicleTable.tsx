@@ -233,7 +233,12 @@ const handleDelete = async (
 
   </p>
 )}
+ {complaint.reply.custom && (
+  <p>
+    <strong>Custom Message:</strong>      {complaint.reply.custom}
 
+  </p>
+)}
 
 
 
