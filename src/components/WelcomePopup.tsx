@@ -39,7 +39,7 @@ const WelcomePopup: React.FC = () => {
             <video
               src="https://res.cloudinary.com/dvrwi63s8/video/upload/v1757943902/Scan2Alert_-_Friends_kltmqu.mp4"
               controls
-              autoPlay
+              // autoPlay
               loop
               className="w-full h-64 sm:h-80 md:h-[400px] rounded-xl object-cover shadow-md"
             />
