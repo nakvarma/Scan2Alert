@@ -46,11 +46,8 @@ const WelcomePopup: React.FC = () => {
             />
             <div className="mt-5 text-center">
               <h2 className="text-2xl font-bold text-[#0084C2]">
-                Welcome to Scan2Alert 🚗
+                Welcome to Scan2Alert
               </h2>
-              <p className="text-gray-600 mt-2">
-                Watch this quick video to see how our platform works.
-              </p>
             </div>
           </motion.div>
         </motion.div>
