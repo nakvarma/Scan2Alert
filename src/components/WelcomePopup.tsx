@@ -41,7 +41,6 @@ const WelcomePopup: React.FC = () => {
               controls
               autoPlay
               loop
-              muted
               className="w-full h-64 sm:h-80 md:h-[400px] rounded-xl object-cover shadow-md"
             />
             <div className="mt-5 text-center">
