@@ -40,7 +40,7 @@ const ContactUs: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
+        <div className="min-h-screen flex flex-col font-serif bg-white overflow-x-hidden">
             <div className="shrink-0">
                 <Navbar />
             </div>
@@ -121,7 +121,7 @@ const ContactUs: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm sm:text-base">
                         <div className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105">
                             <h2 className="text-lg font-semibold mb-2 text-[#0084C2]">Address</h2>
-                       
+
                             <div className="flex items-start space-x-2">
                                 <FaMapMarkerAlt className="mt-1 text-5xl text-[#0084C2]" />
                                 <p className="text-gray-700">
@@ -134,9 +134,8 @@ const ContactUs: React.FC = () => {
                             <h2 className="text-lg font-semibold mb-2 text-[#0084C2]">Phone </h2>
                             <div className="flex items-start space-x-2">
                                 <FaPhoneAlt className="mt-1 text-[#0084C2]" />
-                                <a href="tel:+919393088000" className="text-gray-700 hover:text-blue-600">
-                                    +91 93930 88000
-                                </a>
+                                <a href="tel:+919100997392 " className="text-gray-700 hover:text-blue-600">
+                                    +91 9100997392                                </a>
                             </div>
 
                         </div>
@@ -147,30 +146,13 @@ const ContactUs: React.FC = () => {
                                 <a href="mailto:info@scan2alert.in" className="text-gray-700 hover:text-blue-600">
                                     info@scan2alert.in
                                 </a>
-
                             </div>
-                            <div className="flex items-start space-x-2">
-                                <FaEnvelope className="mt-1 text-[#0084C2]" />
-                                <a href="mailto:nvsraju.itp@gmail.com" className="text-gray-700 hover:text-blue-600">
-                                    nvsraju.itp@gmail.com
-                                </a>
-
-                            </div>
-
                         </div>
-                       
-
                     </div>
-              
-
                 </div>
             </div>
             <div className='flex justify-center items-center flex-col space-y-4 p-6'>
 
-               
-
-
-              
             </div>
             <Footer />
         </div>

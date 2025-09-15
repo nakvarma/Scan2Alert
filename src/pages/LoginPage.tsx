@@ -10,7 +10,7 @@ const LoginPage: React.FC = () => {
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-serif font-bold text-gray-900">
 
-             SignIn to Scan2alert!
+              SignIn to Scan2alert!
             </h2>
           </div>
 

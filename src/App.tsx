@@ -17,13 +17,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import WelcomePopup from "./components/WelcomePopup";
 function App() {
   return (
     <AuthProvider>
       <div>
 <ToastContainer 
-  position="top-center"   // 👈 Change this
+  position="top-center"   
   autoClose={3000}
   hideProgressBar={false}
   newestOnTop={false}
@@ -33,6 +33,7 @@ function App() {
   draggable
   pauseOnHover
 />
+ <WelcomePopup />
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-3.5rem)]">
           <Routes>
             <Route path="/login" element={<LoginPage />} />

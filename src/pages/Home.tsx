@@ -1,98 +1,142 @@
+
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from './NavBar';
 import Footer from './Footer';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useState, useEffect, useRef } from "react";
+import { Carousel } from "react-responsive-carousel";
+import qrCode from "../assets/qrcode.png";
+
+const whyScan2Alert = [
+  {
+    text: "Scan2Alert is FREE!\n Anyone Anywhere in INDIA\n can use Scan2Alert for FREE!.",
+    gif: "/assets/free.png",
+  },
+  {
+    text: "No APP Needed\n Scan2Alert uses Whatsapp to\n Register/contact the owner.",
+    gif: "/assets/whatsapp.png",
+  },
+  {
+    text: "We ensure Privacy. All details remain Confidential.\n No contact details are shared between the owner and the complainer.",
+    gif: "/assets/privacy.png",
+  },
+];
 
 const Home: React.FC = () => {
-  const features = [
-    { title: 'Instant Communication with No App Needed', text: 'Unlike traditional vehicle alert systems, Scan2Alert uses WhatsApp, which almost everyone already has. No new apps to install, no learning curve — just scan and message' },
-    { title: 'Privacy by Design', text: 'Your personal phone number is never displayed to the person scanning the QR code.Communication is initiated securely through WhatsApp, and you remain anonymous unless you choose to reply.' },
-    { title: 'Smart, Simple, and Effective', text: 'Our system is designed to be lightweight and intuitive. Register your vehicle, stick a QR code on your car, and you’re ready to go. It’s the modern answer to passive-aggressive notes on windshields.' },
-    { title: 'Works Everywhere ', text: 'Whether you are parked in a gated community, at a mall, or in a busy city — Scan2Alert works throughout India as long as your phone is connected to the internet.' },
-    // { title: 'Advanced Encryption', text: 'End-to-end encryption for maximum data protection.' },
-    // { title: '24/7 Support', text: 'Our dedicated support team is always here to assist you.' }
-  ];
-
-  const parkingImages = [
-    '/assets/mk.png',
-    '/assets/willy.png',
-    '/assets/chris.png'
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden relative">
+    <div className="min-h-screen flex flex-col font-serif bg-white overflow-x-hidden relative">
       <Navbar />
-
       <motion.div
         className="absolute inset-0 -z-10 bg-gradient-to-r from-[#7BBBFF] via-[#05OF2A] to-[#7BBBFF] opacity-80"
         initial={{ backgroundPosition: '0% 50%' }}
         animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
         transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
       />
-
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
-        <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-8 md:p-10 space-y-12 transform hover:scale-105 transition-all duration-700 ease-in-out">
-          {/* <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0084C2] mb-6">
-              Welcome to the Car Registration Portal
-            </h1>
-            <p className="text-[#0084C2] text-lg sm:text-xl mb-6">
-              Easily register your vehicle online in just a few steps.
-            </p>
-            <motion.button
-              className="bg-[#0084C2] text-white px-10 py-4 text-lg rounded-2xl shadow-md transition-all duration-500 hover:scale-110 hover:shadow-xl"
-              whileHover={{
-                scale: 1.1,
-                rotate: 5,
-                backgroundColor: '#1B9BD7',
-                boxShadow: '0 15px 40px rgba(0, 132, 194, 0.6)'
-              }}
-              whileTap={{
-                scale: 0.95,
-                rotate: -5,
-                backgroundColor: '#006B9F',
-                boxShadow: '0 5px 20px rgba(0, 132, 194, 0.4)'
-              }}
-            >
-              Start Registration
-            </motion.button>
-          </div> */}
+        <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-4 sm:p-8 md:p-10 space-y-10">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl ">
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm p-3">
+              <Carousel
+                showArrows
+                showThumbs={false}
+                infiniteLoop
+                autoPlay
+                interval={4000}
+                transitionTime={800}
+                emulateTouch
+                className="rounded-2xl"
+              >
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+                  <img
+                    src="/assets/1st Pic.png"
+                    alt="slider 1 bg"
+                    className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
+                  />
+                  <img
+                    src="/assets/1st Pic.png"
+                    alt="slider 1"
+                    className="relative w-full h-full object-contain rounded-2xl z-10"
+                  />
+                </div>
 
-          {/* <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="mt-12">
-            {parkingImages.map((src, index) => (
-              <div key={index} className="rounded-2xl overflow-hidden shadow-lg  w-full flex items-center justify-center bg-gray-100">
-                <img src={src} alt={`Parking Issue ${index + 1}`} className="object-cover w-full h-full" />
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+                  <img
+                    src="/assets/2nd Pic.png"
+                    alt="slider 2 bg"
+                    className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
+                  />
+                  <img
+                    src="/assets/2nd Pic.png"
+                    alt="slider 2"
+                    className="relative w-full h-full object-contain rounded-2xl z-10"
+                  />
+                </div>
+              </Carousel>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm p-3">
+              <div className="w-full aspect-video">
+                <video
+                  src="https://res.cloudinary.com/dvrwi63s8/video/upload/v1757936756/Steps_video_720p_nppqdd.mp4"
+                  controls
+                  controlsList="nodownload"
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full h-full rounded-2xl object-contain"
+                />
               </div>
-            ))}
-          </Carousel> */}
-          <img src="/assets/willy.png" alt="willy" />
+            </div>
+          </div>
+          <div className="text-center space-y-10">
+            <div>
+              <img src={qrCode} alt="QR" className="w-40 h-40 mx-auto" />
+              <span className="text-xl font-bold text-[#0084C2]">
+                Scan The QR code to
+                <br />
+                Register/ Raise an Issue
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {whyScan2Alert.map((reason, idx) => {
+                const lines = reason.text.split("\n");
+                return (
+                  <div
+                    key={idx}
+                    className="flex flex-col items-center text-center p-4 space-y-2"
+                  >
+                    <div className="flex items-center justify-center w-20 h-20">
+                      <img
+                        src={reason.gif}
+                        alt="reason gif"
+                        className="w-20 h-20 object-contain"
+                      />
+                    </div>
 
-          <div className="relative w-full overflow-hidden bg-[#E0F2FB] p-8 rounded-2xl shadow-xl">
-            <h2 className="text-2xl font-semibold text-[#0084C2] text-center mb-6">
-              What Makes Us Different?
-            </h2>
-            <div className="flex flex-wrap gap-8 justify-center">
-              {features.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative flex-shrink-0 bg-white rounded-2xl shadow-lg p-8 w-full sm:w-72 md:w-80 transition-all duration-500 hover:scale-105 hover:shadow-xl"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 + index * 0.2, type: 'spring', stiffness: 100, damping: 20 }}
-                  whileHover={{ scale: 1.1, boxShadow: '0 20px 40px rgba(0, 132, 194, 0.5)' }}
-                  whileTap={{ scale: 0.95, boxShadow: '0 15px 30px rgba(0, 132, 194, 0.4)' }}
-                >
-                  <h3 className="text-xl font-semibold text-[#0084C2]">{item.title}</h3>
-                  <p className="mt-2 text-[#0073AD]">{item.text}</p>
-                </motion.div>
-              ))}
+                    <p className="text-gray-800 font-semibold text-sm whitespace-pre-line">
+                      <span className="text-blue-600">{lines[0]}</span>
+                      {lines.slice(1).map((line, i) => (
+                        <React.Fragment key={i}>
+                          {"\n"}
+                          {line}
+                        </React.Fragment>
+                      ))}
+                    </p>
+                  </div>
+                );
+              })}
+
             </div>
           </div>
         </div>
       </div>
-<Footer/>    </div>
+
+      <Footer />
+    </div>
   );
 };
 

@@ -1,263 +1,123 @@
-// import React from 'react';
-// import Navbar from './NavBar';
-// import Footer from './Footer';
+import React from "react";
+import { motion } from "framer-motion";
+import Navbar from "./NavBar";
+import Footer from "./Footer";
 
-// const Services: React.FC = () => {
-//   const services = [
-//     {
-//       title: 'Vehicle Registration',
-//       heading: 'Easily register your vehicle online. Create an account and link your vehicle to your WhatsApp number',
-//       description: (
-//         <>
-//          <span className='mb-8'>features:</span>
-//         <ul  className='list-disc pl-6 text-sm '>
-         
-//           <li><strong>Quick registration</strong></li>
-//           <li><strong>WhatsApp number integration</strong></li>
-//           <li><strong>Edit or delete vehicles anytime</strong></li>
-//         </ul>
-//         </>
-//       ),
-//     },
-//     {
-//       title: 'Standard QR Code Generation',
-//       heading: 'Receive a ready-to-use QR code for each vehicle.',
-//       description: 'Each registered vehicle gets a standard QR code that you can place on your car rightaway. When scanned, it opens WhatsApp with a pre-filled message to contact you. Compatible with any QR scanner',
-//     },
-//     {
-//       title: 'WhatsApp Integration',
-//       heading: 'No app downloads, no complications.Scan2Alert uses WhatsApp’s “Click to Chat” feature to connect car owners. The scanner just opens WhatsApp with a message — no one sees your phone number.',
-//       description: (
-//         <>
-//         <h1>Highlights:</h1>
-//         <ul className='list-disc pl-6 text-sm sm:text-base '>
-//   <li><strong>Works Indiawide</strong></li>
-//   <li><strong>Pre-written message format</strong></li>
-//   <li><strong>Seamless and private</strong></li>
-// </ul>
-//         </>
-//       ),
-//     },
-//     {
-//       title: 'Security & Abuse Protection',
-//       heading: 'Your privacy is our priority.',
-//       description: (
-//         <>
-//         <p>
-//           All communication is handled through WhatsApp. We do not expose any personal data or phone
-// numbers.
-//         </p>
-//         <h1 className=' font-normal'>Security Features:</h1>
-       
-        
+const welcomeData = [
+  {
+    image: "/assets/Welcome - screenshot.jpg",
+    arrowText:
+      "Once you scan QR code - will be redirected to Scan2Alert WABA Account.",
+    name: "Welcome",
+    position: "left",
+  },
+  {
+    image: "/assets/4.jpg",
+    description: "Your vehicle is successfully registered with Scan2Alert ",
+    name: "Register",
+    position: "right",
+  },
+  {
+    image: "/assets/3.jpg",
+    name: "Raise an Issue",
+    arrowText: "Select the issue you want to notify the car owner about",
+    position: "left",
+  },
+  {
+    name: "Alert sent to Owner",
+    description: "Owner received an alert that his vehicle is blocking Road ",
+    image: "/assets/2.jpg",
+    position: "right",
+  },
+  {
+    name: "Response Options",
+    description: "Options for the owner to respond to the complainer ",
+    image: "/assets/5.jpg",
+    position: "left",
+  },
+  {
+    name: "Response from Owner",
+    description:
+      "Once the owner responds, the complainer will receive the message sent by Owner.",
+    image: "/assets/6.jpg",
+    position: "right",
+  },
+];
+const Arrow = ({ direction }: { direction: "left" | "right" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 100"
+    className="w-40 h-20 text-[#0084C2] hidden lg:block"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="4"
+    strokeLinecap="round"
+  >
+    {direction === "right" ? (
+      <path d="M0,60 C80,60 120,40 190,40 L170,25 M190,40 L170,55" />
+    ) : (
+      <path d="M200,60 C120,60 80,40 10,40 L30,25 M10,40 L30,55" />
+    )}
+  </svg>
+);
 
-//           <ul className='list-disc pl-6 text-sm sm:text-base '>
-//             <li><strong>Number privacy</strong></li>
-//             <li>
-//               Misuse tracking and reporting
-//             </li>
-        
-//           </ul>
-         
-//         </>
-//       ),
-//     },
-//     {
-//       title: 'Support Services',
-//       heading: 'Need help? We’ve got your back.Whether you’re setting up for the first time or troubleshooting a scan issue, our support team is here to assist. ',
-//       description: (
-//         <>
-//         <h1>Support Options:
-// </h1>
-//         <ul className='list-disc pl-6 text-sm sm:text-base '>
-//           <li><strong>Email support (Free users)
-// </strong></li>
-//           <li><strong>FAQs </strong></li>
-        
-//           </ul>
-//         </>
-//       ),
-//     },
-  
-//   ];
-
-//   return (
-//     <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
-//       <div className="shrink-0">
-//         <Navbar />
-//       </div>
-
-//       <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6">
-//         <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
-//           <div className="text-center">
-//             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold" style={{ color: '#0084C2' }}>
-//               Our Services
-//             </h1>
-//             <p className="mt-2 text-gray-600 text-sm sm:text-base">
-//              Scan2Alert provides a fast, secure, and app-free way to communicate with vehicle owners using
-// WhatsApp and a standard QR code system
-//             </p>
-//           </div>
-
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm sm:text-base">
-//             {services.map((service, index) => (
-//               <div
-//                 key={index}
-//                 className="relative text-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 group"
-//                 style={{ backgroundColor: '#0084C2' }}
-//               >
-//                 <div className="relative z-10 p-6 ">
-//                   <h2 className="text-sm  group-hover:scale-110 transition-transform duration-300">
-//                     {service.title}
-//                   </h2>
-//                    <p className="mt-2 text-sm whitespace-normal group-hover:opacity-75 transition-opacity duration-300">
-//                     {service.heading}
-//                   </p>
-//                   <p className="mt-2 text-sm group-hover:opacity-75 duration-300">
-//                     {service.description}
-//                   </p>
-//                 </div>
-//                 <div
-//                   className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-300"
-//                   style={{ backgroundImage: 'url(/images/service-bg.jpg)' }}
-//                 ></div>
-//               </div>
-//             ))}
-//           </div>
-
-         
-//         </div>
-//       </div>
-//       <Footer/>
-//     </div>
-//   );
-// };
-
-// export default Services;
-import React from 'react';
-import { motion } from 'framer-motion';
-import Navbar from './NavBar';
-import Footer from './Footer';
-
-const Services: React.FC = () => {
-  const services = [
-    {
-      title: 'Vehicle Registration',
-      heading: 'Easily register your vehicle online. Create an account and link your vehicle to your WhatsApp number',
-      description: (
-        <>
-          <span className='mb-8'>features:</span>
-          <ul className='list-disc pl-6 text-sm '>
-            <li><strong>Quick registration</strong></li>
-            <li><strong>WhatsApp number integration</strong></li>
-            <li><strong>Edit or delete vehicles anytime</strong></li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: 'Standard QR Code Generation',
-      heading: 'Receive a ready-to-use QR code for each vehicle.',
-      description: 'Each registered vehicle gets a standard QR code that you can place on your car rightaway. When scanned, it opens WhatsApp with a pre-filled message to contact you. Compatible with any QR scanner',
-    },
-    {
-      title: 'WhatsApp Integration',
-      heading: 'No app downloads, no complications.Scan2Alert uses WhatsApp’s “Click to Chat” feature to connect car owners. The scanner just opens WhatsApp with a message — no one sees your phone number.',
-      description: (
-        <>
-          <h1>Highlights:</h1>
-          <ul className='list-disc pl-6 text-sm sm:text-base '>
-            <li><strong>Works Indiawide</strong></li>
-            <li><strong>Pre-written message format</strong></li>
-            <li><strong>Seamless and private</strong></li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: 'Security & Abuse Protection',
-      heading: 'Your privacy is our priority.',
-      description: (
-        <>
-          <p>
-            All communication is handled through WhatsApp. We do not expose any personal data or phone numbers.
-          </p>
-          <h1 className=' font-normal'>Security Features:</h1>
-          <ul className='list-disc pl-6 text-sm sm:text-base '>
-            <li><strong>Number privacy</strong></li>
-            <li>
-              Misuse tracking and reporting
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      title: 'Support Services',
-      heading: 'Need help? We’ve got your back.Whether you’re setting up for the first time or troubleshooting a scan issue, our support team is here to assist. ',
-      description: (
-        <>
-          <h1>Support Options:</h1>
-          <ul className='list-disc pl-6 text-sm sm:text-base '>
-            <li><strong>Email support (Free users)</strong></li>
-            <li><strong>FAQs </strong></li>
-          </ul>
-        </>
-      ),
-    },
-  ];
-
+const Welcome: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
-      <div className="shrink-0">
-        <Navbar />
-      </div>
+    <div className="min-h-screen flex flex-col bg-white font-serif">
+      <Navbar />
 
       <motion.div
-        className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6"
+        className="flex-1 px-4 sm:px-6 md:px-10 py-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-4 sm:p-6 md:p-8 flex flex-col space-y-8 transition-all duration-700 ease-in-out transform hover:scale-105">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold" style={{ color: '#0084C2' }}>
+            <h1 className="text-3xl lg:text-4xl font-bold text-[#0084C2]">
               Our Services
             </h1>
-            <p className="mt-2 text-gray-600 text-sm sm:text-base">
-              Scan2Alert provides a fast, secure, and app-free way to communicate with vehicle owners using
-              WhatsApp and a standard QR code system
+            <p className="mt-2 text-gray-600 text-base sm:text-lg">
+              Scan2Alert provides a fast, secure and app-free way to communicate
+              with vehicle owners using WhatsApp and standard QR code
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm sm:text-base">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                                className="bg-[#E0F2FB] rounded-xl shadow-md p-6 transition-transform duration-300 transform hover:scale-105 group"
-              
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="relative z-10 p-6 ">
-                <h2 className="text-lg font-semibold mb-2 text-[#0084C2] group-hover:scale-110 transition-transform duration-300">
-                    {service.title}
-                  </h2>
-                  <p className="mt-2 text-sm whitespace-normal group-hover:opacity-75 transition-opacity duration-300">
-                    {service.heading}
+          {welcomeData.map((step, index) => (
+            <motion.div
+              key={index}
+              className={`relative flex flex-col lg:flex-row items-center gap-6 mt-14 ${
+                step.position === "right" ? "lg:flex-row-reverse" : ""
+              }`}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >              <div className="flex-1 flex flex-col items-center">
+                <p className="text-center text-2xl sm:text-3xl font-bold text-[#0084C2] mb-4">
+                  {step.name}
+                </p>
+                <motion.img
+                  src={step.image}
+                  alt={`Step ${index + 1}`}
+                  className="w-[350px] sm:w-[450px] md:w-[550px] max-h-[500px] object-contain rounded-2xl transform scale-105 transition-transform duration-500 ease-in-out hover:scale-110 shadow-md"
+                />
+              </div>
+              <Arrow
+                direction={step.position === "right" ? "left" : "right"}
+              />
+              <div className="flex-1 text-left max-w-lg bg-[#E0F2FB] p-6 rounded-2xl shadow-md border border-gray-200">
+                {step.arrowText && (
+                  <p className="mb-4 text-[#0084C2] font-medium italic">
+                    {step.arrowText}
                   </p>
-                  <p className="mt-2 text-sm group-hover:opacity-75 duration-300">
-                    {service.description}
+                )}
+                {step.description && (
+                  <p className="text-lg font-medium text-[#0084C2] italic whitespace-pre-line leading-relaxed">
+                    {step.description}
                   </p>
-                </div>
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-300"
-                  style={{ backgroundImage: 'url(/images/service-bg.jpg)' }}
-                ></div>
-              </motion.div>
-            ))}
-          </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
 
@@ -266,4 +126,47 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default Welcome;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,7 +36,7 @@ const TermsAndConditions: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-serif bg-gray-100 overflow-x-hidden">
+    <div className="min-h-screen flex flex-col font-serif bg-white overflow-x-hidden">
       <div className="shrink-0">
         <Navbar />
       </div>
@@ -55,29 +55,6 @@ const TermsAndConditions: React.FC = () => {
               services.
             </p>
           </div>
-
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm sm:text-base">
-                        {terms.map((term, index) => (
-                            <div
-                                key={index}
-                                className="relative rounded-xl text-white shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 group"
-                                style={{ backgroundColor: '#0084C2' }}
-                            >
-                                <div className="relative z-10 p-6 text-center">
-                                    <h2 className="text-lg font-semibold group-hover:scale-110 transition-transform duration-300">
-                                        {term.title}
-                                    </h2>
-                                    <p className="mt-2 text-sm group-hover:opacity-75 transition-opacity duration-300">
-                                        {term.description}
-                                    </p>
-                                </div>
-                                <div
-                                    className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-300"
-                                    style={{ backgroundImage: 'url(/images/terms-bg.jpg)' }}
-                                ></div>
-                            </div>
-                        ))}
-                    </div> */}
           <div>
             <h1 className="mt-4 mb-4 font-bold">Terms and Conditions</h1>
             <p>
@@ -547,14 +524,6 @@ const TermsAndConditions: React.FC = () => {
               Republic of India enforceable in the courts of Hyderabad.
             </span>
           </div>
-
-          {/* <div
-            className="text-center text-xs pt-4 border-t"
-            style={{ color: "#0084C2" }}
-          >
-            &copy; {new Date().getFullYear()} Car Registration Portal. All
-            rights reserved.
-          </div> */}
         </div>
       </div>
       <Footer />
