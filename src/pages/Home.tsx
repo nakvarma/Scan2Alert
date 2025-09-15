@@ -52,7 +52,7 @@ const Home: React.FC = () => {
                 showThumbs={false}
                 infiniteLoop
                 autoPlay
-                interval={4000}
+                interval={8000}
                 transitionTime={800}
                 emulateTouch
                 className="rounded-2xl"
