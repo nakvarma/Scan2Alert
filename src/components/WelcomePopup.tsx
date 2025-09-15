@@ -7,7 +7,6 @@ const WelcomePopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    // ✅ Page load hone ke 1 sec baad popup khulega
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 1000);
@@ -30,7 +29,6 @@ const WelcomePopup: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}
           >
-            {/* ❌ Close Button (thoda upar corner me) */}
             <button
               onClick={() => setIsOpen(false)}
               className="absolute -top-3 -right-3 bg-white shadow-lg text-gray-600 hover:text-gray-900 rounded-full p-1"
@@ -38,7 +36,6 @@ const WelcomePopup: React.FC = () => {
               <X size={20} />
             </button>
 
-            {/* 🎥 Single Video */}
             <video
               src="https://res.cloudinary.com/dvrwi63s8/video/upload/v1757943902/Scan2Alert_-_Friends_kltmqu.mp4"
               controls
@@ -47,8 +44,6 @@ const WelcomePopup: React.FC = () => {
               muted
               className="w-full h-64 sm:h-80 md:h-[400px] rounded-xl object-cover shadow-md"
             />
-
-            {/* Text Section */}
             <div className="mt-5 text-center">
               <h2 className="text-2xl font-bold text-[#0084C2]">
                 Welcome to Scan2Alert 🚗
