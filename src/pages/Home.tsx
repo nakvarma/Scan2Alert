@@ -38,7 +38,14 @@ const Home: React.FC = () => {
         <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-4 sm:p-8 md:p-10 space-y-10">
           <div className="relative rounded-2xl overflow-hidden shadow-xl ">
           </div>
+          <div className="text-center">
+
+
+            <h1 className="text-3xl lg:text-4xl font-bold text-[#0084C2]">
+              Welcome to Scan2Alert            </h1>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
             <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm p-3">
               <Carousel
                 showArrows

@@ -21,6 +21,7 @@ const About: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
+          About Us
         </motion.h2>
 
         <div className="w-[92%] sm:w-4/5 md:w-3/4 mx-auto text-center space-y-6 mb-16">
