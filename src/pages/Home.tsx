@@ -41,8 +41,8 @@ const Home: React.FC = () => {
           <div className="text-center">
 
 
-            <h1 className="text-3xl lg:text-4xl font-bold text-[#0084C2]">
-              Welcome to Scan2Alert            </h1>
+            <h1 className="text-4xl lg:text-6xl font-bold text-[#0084C2]">
+              Welcome to Scan2Alert!           </h1>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 

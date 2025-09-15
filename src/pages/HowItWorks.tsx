@@ -37,7 +37,8 @@ const HowItWorks: React.FC = () => {
                   <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl p-6 sm:p-10 flex flex-col space-y-12">
 
           <div className="text-center space-y-4 ">
-            <h1 className="text-3xl sm:text-3xl lg:text-3xl font-extrabold text-[#0084C2] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-[#0084C2] tracking-tight">
+
               How It Works
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -52,15 +53,16 @@ Complainant seamless, secure and hassle-free
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-4 bg-[#E0F2FB] rounded-2xl">
-              <h2 className="flex items-center gap-3 text-lg font-semibold text-[#0084C2 ]">
+            <div className="space-y-4 bg-[#E0F2FB] text-[#0084C2 ]  rounded-2xl">
+              <h2 className="flex items-center gap-3  text-lg font-semibold text-[#0084C2]">
                 <span className="p-3 m-2 bg-white rounded-full">
                    <img
             src={'/assets/arrow.gif'}
             alt="reason gif"
-            className="w-10 h-10 object-contain"
+            className="w-10 h-10  object-contain"
           />
                 </span>
+                
                 Register Your Vehicle
               </h2>
               <p className="text-gray-600 ml-2 text-lg leading-relaxed">
